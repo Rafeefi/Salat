@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data/>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnsalahtiprayer"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylecyan_100">
+
+        <ScrollView
+            android:id="@+id/scrollViewScrollview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:gravity="start">
+
+            <LinearLayout
+                android:id="@+id/linearSplash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/frameStacksalahtiprayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_300pxv"
+                    android:layout_marginStart="@dimen/_10pxh">
+
+                    <TextView
+                        android:id="@+id/txtSALAHTIPrayer"
+                        style="@style/txtPoppinsbold30"
+                        android:layout_width="296dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|bottom"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:gravity="top|center"
+                        android:text="@string/msg_salahti_prayer"
+                        tools:text="@string/msg_salahti_prayer" />
+
+                    <ImageView
+                        android:id="@+id/imageMoon"
+                        imageRes="@{@drawable/img_moon}"
+                        android:layout_width="@dimen/_246pxh"
+                        android:layout_height="@dimen/_226pxh"
+                        android:layout_gravity="top|end"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:scaleType="fitXY"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_moon" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameStackvector"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_471pxv"
+                    android:layout_marginTop="@dimen/_32pxv"
+                    android:gravity="start">
+
+                    <ImageView
+                        android:id="@+id/imageVector"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_184pxv"
+                        android:layout_gravity="top|start"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_vector"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_vector" />
+
+                    <ImageView
+                        android:id="@+id/imageRectangleTwentyFour"
+                        imageRes="@{@drawable/img_rectangle24}"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_291pxv"
+                        android:layout_gravity="bottom|start"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:scaleType="fitXY"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_rectangle24" />
+                </FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">leen_s_application2</string>
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+<string name="lbl_sign_in">Sign in</string>
+  <string name="msg_asalamu_alaikum">Asalamu Alaikum !!!</string>
+  <string name="lbl_email">email</string>
+  <string name="lbl_salahti">SALAHTI</string>
+  <string name="msg_confirm_passwor">Confirm Password</string>
+  <string name="msg_salahti_prayer">SALAHTI
+Prayer App</string>
+  <string name="lbl_sign_up">Sign Up</string>
+  <string name="lbl_sign_up2">Sign Up </string>
+  <string name="lbl_password">Password</string>
+  <string name="lbl_sign_up3">Sign up</string>
+  <string name="lbl_or">Or</string>
+</resources>

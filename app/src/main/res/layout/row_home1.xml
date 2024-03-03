@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data/>
+    <FrameLayout android:id="@+id/frameNext"
+        android:layout_height="wrap_content" android:layout_width="match_parent">
+        <ImageView android:id="@+id/imageTurnnotificatiOne"
+            android:layout_gravity="end"
+            android:layout_height="@dimen/_24pxh"
+            android:layout_marginBottom="@dimen/_14pxv"
+            android:layout_marginEnd="@dimen/_19pxh"
+            android:layout_marginStart="@dimen/_19pxh"
+            android:layout_marginTop="@dimen/_14pxv"
+            android:layout_width="@dimen/_27pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_turnnotificati"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_turnnotificati"/>
+        <LinearLayout android:id="@+id/linearRowasr"
+            android:layout_gravity="start"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylecornerRadius">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtAsrOne"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7pxv"
+                android:layout_marginStart="@dimen/_35pxh"
+                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_weight="0.22" android:layout_width="0dp"
+                android:singleLine="true" android:text="@string/lbl_asr"
+                style="@style/txtKanitregular24" tools:text="@string/lbl_asr"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtLeftPrayer"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8pxv"
+                android:layout_marginEnd="@dimen/_90pxh"
+                android:layout_marginStart="@dimen/_41pxh"
+                android:layout_marginTop="@dimen/_9pxv"
+                android:layout_weight="0.78" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@string/lbl_left_07_33_51"
+                style="@style/txtKanitregular24" tools:text="@string/lbl_left_07_33_51"/>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

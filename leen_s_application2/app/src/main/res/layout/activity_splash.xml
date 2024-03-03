@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data/>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnsalahtiprayer"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylecyan_100">
+        <ScrollView android:clipToPadding="false"
+            android:fillViewport="true" android:gravity="start"
+            android:id="@+id/scrollViewScrollview"
+            android:layout_height="0dp" android:layout_weight="1" android:layout_width="match_parent">
+            <LinearLayout android:gravity="end"
+                android:id="@+id/linearSplash"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" android:orientation="vertical">
+                <FrameLayout android:id="@+id/frameStacksalahtiprayer"
+                    android:layout_height="@dimen/_300pxv"
+                    android:layout_marginStart="@dimen/_10pxh" android:layout_width="@dimen/_280pxh">
+                    <TextView android:gravity="top|center"
+                        android:id="@+id/txtSALAHTIPrayer"
+                        android:layout_gravity="bottom|start"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_width="match_parent"
+                        android:text="@string/msg_salahti_prayer"
+                        style="@style/txtPoppinsbold30" tools:text="@string/msg_salahti_prayer"/>
+                    <ImageView android:id="@+id/imageMoon"
+                        android:layout_gravity="top|end"
+                        android:layout_height="@dimen/_226pxh"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_width="@dimen/_246pxh"
+                        android:scaleType="fitXY"
+                        imageRes="@{@drawable/img_moon}"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_moon"/>
+                </FrameLayout>
+                <FrameLayout android:gravity="start"
+                    android:id="@+id/frameStackvector"
+                    android:layout_height="@dimen/_471pxv"
+                    android:layout_marginTop="@dimen/_32pxv" android:layout_width="match_parent">
+                    <ImageView android:id="@+id/imageVector"
+                        android:layout_gravity="top|start"
+                        android:layout_height="@dimen/_184pxv"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_vector"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_vector"/>
+                    <ImageView
+                        android:id="@+id/imageRectangleTwentyFour"
+                        android:layout_gravity="bottom|start"
+                        android:layout_height="@dimen/_291pxv"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        imageRes="@{@drawable/img_rectangle24}"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle24"/>
+                </FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
