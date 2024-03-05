@@ -11,7 +11,7 @@
         <LinearLayout
             android:id="@+id/linearSettingsf"
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="300dp"
             android:layout_marginStart="@dimen/_40pxh"
             android:layout_marginTop="@dimen/_53pxv"
             android:layout_marginEnd="@dimen/_39pxh"
@@ -44,16 +44,16 @@
                         tools:src="@drawable/img_settings" />
 
                     <TextView
-                        android:id="@+id/txtSettingsOne"
+                        android:id="@+id/Privacy"
                         style="@style/txtPoppinsbold24"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_76pxh"
-                        android:layout_weight="0.67"
+                        android:layout_weight="0.80"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="@string/lbl_settings"
-                        tools:text="@string/lbl_settings" />
+                        android:text="@string/privacytitle"
+                        tools:text="@string/privacytitle" />
 
                     <ImageView
                         android:id="@+id/imageSearch"
@@ -69,94 +69,49 @@
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnNotification"
-                style="@style/btnSolidRounded_2"
+
+            <Switch
+                android:id="@+id/notification"
+                style="@style/txtPoppinsbold14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_13pxh"
                 android:layout_marginTop="@dimen/_30pxv"
                 android:layout_marginEnd="@dimen/_13pxh"
-                android:ellipsize="end"
-                android:gravity="center"
                 android:paddingStart="@dimen/_30pxh"
                 android:paddingTop="@dimen/_13pxv"
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingBottom="@dimen/_13pxv"
-                android:singleLine="true"
-                android:text="@string/lbl_notification"
-                android:textAllCaps="false"
-                tools:text="@string/lbl_notification" />
+                android:text="Allow app notifications"
+                />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSilentMode"
-                style="@style/btnSolidRounded_2"
+
+            <Switch
+                android:id="@+id/location"
+                style="@style/txtPoppinsbold14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_13pxh"
                 android:layout_marginTop="@dimen/_30pxv"
                 android:layout_marginEnd="@dimen/_13pxh"
-                android:ellipsize="end"
-                android:gravity="center"
                 android:paddingStart="@dimen/_30pxh"
                 android:paddingTop="@dimen/_13pxv"
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingBottom="@dimen/_13pxv"
-                android:singleLine="true"
-                android:text="@string/lbl_silentMode"
-                android:textAllCaps="false"
-                tools:text="@string/lbl_silentMode" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnPrivacySecurityOne"
-                style="@style/btnSolidRounded_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_13pxh"
-                android:layout_marginTop="@dimen/_30pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:singleLine="true"
-                android:text="@string/msg_privacy_secur"
-                android:textAllCaps="false"
-                tools:text="@string/msg_privacy_secur" />
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnAbout"
-                style="@style/btnSolidRounded_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_13pxh"
-                android:layout_marginTop="@dimen/_30pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:singleLine="true"
-                android:text="@string/lbl_about"
-                android:textAllCaps="false"
-                tools:text="@string/lbl_about" />
+                android:text="Allow location sharing" />
         </LinearLayout>
+
         <FrameLayout
             android:id="@+id/frameStackvector"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_471pxv"
-
+            android:layout_marginTop="@dimen/_32pxv"
             android:gravity="start">
 
             <ImageView
                 android:id="@+id/imageVector"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200pxv"
+                android:layout_height="@dimen/_184pxv"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="@dimen/_10pxv"
                 android:scaleType="fitXY"

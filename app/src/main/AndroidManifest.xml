@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".Privacy"
+            android:exported="false" />
     </application>
 
 </manifest>

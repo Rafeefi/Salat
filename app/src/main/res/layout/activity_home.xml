@@ -7,7 +7,7 @@
         android:layout_width="fill_parent" style="@style/groupStylecyan_100">
         <LinearLayout android:id="@+id/linearColumnlanguage"
             android:layout_gravity="top|start"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_marginBottom="@dimen/_22pxv"
             android:layout_marginTop="@dimen/_22pxv"
             android:layout_width="match_parent" android:orientation="vertical">
@@ -50,7 +50,7 @@
             <ImageView android:id="@+id/imageVector"
                 android:layout_gravity="top|start"
                 android:layout_height="@dimen/_184pxv"
-                android:layout_marginBottom="@dimen/_10pxv"
+
                 android:layout_width="match_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/img_vector"
@@ -60,7 +60,7 @@
                 android:id="@+id/linearColumnturnnotificati"
                 style="@style/groupStylecyan_802"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:background="@drawable/img_rectangle24">
@@ -146,3 +146,4 @@
         </LinearLayout>
     </FrameLayout>
 </layout>
+
