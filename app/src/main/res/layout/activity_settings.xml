@@ -122,9 +122,9 @@
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingBottom="@dimen/_13pxv"
                 android:singleLine="true"
-                android:text="@string/msg_privacy_secur"
+                android:text="@string/msg_ManageLocation"
                 android:textAllCaps="false"
-                tools:text="@string/msg_privacy_secur" />
+                tools:text="@string/msg_ManageLocation" />
 
 
             <androidx.appcompat.widget.AppCompatButton

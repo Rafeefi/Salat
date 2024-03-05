@@ -6,7 +6,8 @@
   <string name="no_internet_connection">No internet connection!</string>
   <string name="lbl_email">email</string>
   <string name="lbl_register_here"> Register here</string>
-  <string name="msg_privacy_secur">Privacy</string>
+  <string name="msg_ManageLocation">Manage Location</string>
+  <string name="conventions">Calculations Conventions</string>
   <string name="msg_16_february_20">16 February, 2023 </string>
   <string name="lbl_left_03_01_02">Left: 03:01:02</string>
   <string name="msg_don_t_have_an_a">Don\u2019t have an account ? Register here</string>
