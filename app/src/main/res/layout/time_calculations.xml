@@ -44,7 +44,7 @@
                         tools:src="@drawable/img_settings" />
 
                     <TextView
-                        android:id="@+id/Privacy"
+                        android:id="@+id/Calculations"
                         style="@style/txtPoppinsbold24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -52,8 +52,8 @@
                         android:layout_weight="0.80"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="@string/privacytitle"
-                        tools:text="@string/privacytitle" />
+                        android:text="@string/lbl_settings"
+                        tools:text="@string/lbl_settings" />
 
                     <ImageView
                         android:id="@+id/imageSearch"
@@ -82,7 +82,7 @@
                 android:paddingTop="@dimen/_13pxv"
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingBottom="@dimen/_13pxv"
-                android:text="Allow app notifications"
+                android:text="Manual Settings "
                 />
 
 

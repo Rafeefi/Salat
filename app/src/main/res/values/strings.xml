@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <string name="app_name">prayertimeapp</string>
-  <string name="privacytitle">Privacy </string>
+  <string name="calc">Time Calculations </string>
   <string name="loading">Loading…</string>
   <string name="no_internet_connection">No internet connection!</string>
   <string name="lbl_email">email</string>
@@ -35,7 +35,7 @@
   <string name="lbl_or">Or</string>
   <string name="lbl_16_14">16:14</string>
   <string name="lbl_dhuhr">Dhuhr</string>
-  <string name="lbl_silentMode">Silent Mode</string>
+  <string name="lbl_silentMode">Time calculations</string>
   <string name="lbl_fajr">Fajr</string>
   <string name="lbl_shuruk">Shuruk</string>
   <string name="lbl_25_rajab_1444">25 Rajab, 1444</string>
