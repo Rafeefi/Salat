@@ -50,6 +50,12 @@
   <string name="second_fragment_label">Second Fragment</string>
   <string name="next">Next</string>
   <string name="previous">Previous</string>
+  <string name="getLocation">Get Location</string>
+  <string name="longitude">Longitude</string>
+  <string name="latitude">Latitude</string>
+  <string name="longitudeValue">0.0</string>
+  <string name="latitudeValue">0.0</string>
+  <string name="location">Location</string>
 
 
 </resources>
