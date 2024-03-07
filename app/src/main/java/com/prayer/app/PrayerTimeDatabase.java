@@ -1,4 +1,5 @@
 package com.prayer.app;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,7 +24,7 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME + " (email TEXT PRIMARY KEY, password TEXT) ");
-        sqLiteDatabase.execSQL("create table prayer_time (email TEXT,name TEXT,time TEXT,FOREIGN KEY(email) REFERENCES prayerTime_table (email));");
+        sqLiteDatabase.execSQL("create table prayer_time (name TEXT,time TEXT);");
     }
 
     @Override
@@ -45,6 +46,7 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
             return true;
     }
 
+    @SuppressLint("Range")
     public ArrayList<PrayerTime> getTimes(String em) {
         SQLiteDatabase db = this.getWritableDatabase();
 

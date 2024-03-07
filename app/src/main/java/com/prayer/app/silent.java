@@ -1,5 +1,4 @@
-package com.prayer.app.appcomponents.ui;
-
+package com.prayer.app;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -29,16 +28,16 @@ public class silent extends AppCompatActivity {
         startB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimePickerDialog dialog=new TimePickerDialog(silent.this, new TimePickerDialog.OnTimeSetListener() {
-                @Override
-                public void onTimeSet(TimePicker view, int hours, int minutes) {
+                TimePickerDialog dialog=new TimePickerDialog(com.prayer.app.silent.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hours, int minutes) {
 
-                    endText.setText(String.valueOf(hours)+":"+String.valueOf(minutes));
+                        endText.setText(String.valueOf(hours)+":"+String.valueOf(minutes));
 
-                }
+                    }
 
 
-            }, 15, 50, true);
+                }, 15, 50, true);
 
 
 
@@ -54,22 +53,22 @@ public class silent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               TimePickerDialog dialog=new TimePickerDialog(silent.this, new TimePickerDialog.OnTimeSetListener() {
-                   @Override
-                   public void onTimeSet(TimePicker view, int hours, int minutes) {
+                TimePickerDialog dialog=new TimePickerDialog(com.prayer.app.silent.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hours, int minutes) {
 
-                       endText.setText(String.valueOf(hours)+":"+String.valueOf(minutes));
+                        endText.setText(String.valueOf(hours)+":"+String.valueOf(minutes));
 
-                   }
-
-
-               }, 15, 50, true);
+                    }
 
 
+                }, 15, 50, true);
 
-                   }
 
-    });
+
+            }
+
+        });
     }
 
 
