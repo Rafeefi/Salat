@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Silence Phone">
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="silent"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="Choose the time in minutes to switch your phone to silent mode or select specific prayer."
+        android:title="Set the silent mode time" />
+    </PreferenceCategory>
+</PreferenceScreen>

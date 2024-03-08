@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <PreferenceCategory android:title="Prayer Times Calculations" >
+        <SwitchPreference
+            style="@style/txtPoppinsbold14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5pxh"
+            android:layout_marginTop="@dimen/_30pxv"
+            android:layout_marginEnd="@dimen/_13pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_13pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingBottom="@dimen/_13pxv"
+            android:defaultValue="false"
+            android:key="@string/manual"
+            android:summary="Calculate prayer times based on preferred parameters."
+            android:title="Manual Settings " />
+
+        <ListPreference
+            android:defaultValue="@string/juristic_default"
+            android:dependency="@string/manual"
+            android:entries="@array/juristic_entries"
+            android:entryValues="@array/juristic_values"
+            android:key="juristic"
+            style="@style/txtPoppinsbold14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5pxh"
+            android:layout_marginTop="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_13pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_13pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingBottom="@dimen/_13pxv"
+            android:title="Juristic Method" />
+
+        <ListPreference
+            style="@style/txtPoppinsbold14"
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5pxh"
+            android:layout_marginTop="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_13pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_13pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingBottom="@dimen/_13pxv"
+            android:defaultValue="@string/calculation_default"
+            android:dependency="@string/manual"
+            android:entries="@array/calculation_entries"
+            android:entryValues="@array/calculation_values"
+            android:key="@string/calculation"
+            android:title="@string/conventions"/>
+
+
+
+        <ListPreference
+            android:defaultValue="@string/time_default"
+            android:dependency="@string/manual"
+            android:entries="@array/time_entries"
+            android:entryValues="@array/time_values"
+            android:key="@string/time"
+            android:title="Time Format"
+            style="@style/txtPoppinsbold14"
+            android:layout_width="316dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="@dimen/_5pxh"
+            android:layout_marginTop="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_13pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_13pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingBottom="@dimen/_13pxv"/>
+    </PreferenceCategory>
+
+
+
+
+
+</PreferenceScreen>

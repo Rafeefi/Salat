@@ -11,7 +11,7 @@
         <LinearLayout
             android:id="@+id/linearSettingsf"
             android:layout_width="match_parent"
-            android:layout_height="425dp"
+            android:layout_height="420dp"
             android:layout_marginStart="@dimen/_40pxh"
             android:layout_marginTop="@dimen/_53pxv"
             android:layout_marginEnd="@dimen/_39pxh"
@@ -44,22 +44,20 @@
                         tools:src="@drawable/img_settings" />
 
                     <TextView
-                        android:id="@+id/Calculations"
+                        android:id="@+id/txtManageLocation"
                         style="@style/txtPoppinsbold24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_76pxh"
-                        android:layout_weight="0.80"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="@string/lbl_settings"
-                        tools:text="@string/lbl_settings" />
+                        android:text="@string/location" />
 
                     <ImageView
                         android:id="@+id/imageSearch"
                         android:layout_width="@dimen/_26pxh"
                         android:layout_height="@dimen/_26pxh"
-                        android:layout_marginStart="@dimen/_77pxh"
+                        android:layout_marginStart="@dimen/_73pxh"
                         android:layout_marginTop="@dimen/_7pxv"
                         android:layout_marginBottom="@dimen/_2pxv"
                         android:scaleType="fitXY"
@@ -70,88 +68,58 @@
             </androidx.appcompat.widget.Toolbar>
 
 
-            <Switch
-                android:id="@+id/notification"
-                style="@style/txtPoppinsbold14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_30pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:text="Manual Settings " />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:text="Calculate prayer times based on preferred parameters." />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+                android:text="@string/latitude"
+                style="@style/txtPoppinsbold24"
+                android:layout_marginTop="56dp"/>
 
             <TextView
-                android:id="@+id/JuristicMethod"
-                style="@style/txtPoppinsbold14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_latitude"
+                android:text="@string/latitudeValue"
+                android:textColor="@color/indigo_900"
+                android:textSize="32sp"/>
+
+
+            <TextView
+                style="@style/txtPoppinsbold24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/longitude" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_longitude"
+                android:text="@string/longitudeValue"
+                android:textColor="@color/indigo_900"
+                android:textSize="32sp"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGetLocation"
+                style="@style/btnSolidRounded_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_20pxv"
+                android:layout_marginStart="@dimen/_13pxh"
+                android:layout_marginTop="@dimen/_30pxv"
                 android:layout_marginEnd="@dimen/_13pxh"
+                android:ellipsize="end"
+                android:gravity="center"
                 android:paddingStart="@dimen/_30pxh"
                 android:paddingTop="@dimen/_13pxv"
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingBottom="@dimen/_13pxv"
-                android:text="Juristic Method" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/Conventions"
-                style="@style/txtPoppinsbold14"
-                android:layout_width="316dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_20pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:text="@string/conventions" />
-
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/TimeFormat"
-                style="@style/txtPoppinsbold14"
-                android:layout_width="316dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_20pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:text="Time Format" />
-
-
+                android:singleLine="true"
+                android:text="@string/lbl_about"
+                android:textAllCaps="false"
+                tools:text="@string/getLocation" />
         </LinearLayout>
-
         <FrameLayout
             android:id="@+id/frameStackvector"
             android:layout_width="match_parent"
@@ -162,7 +130,7 @@
             <ImageView
                 android:id="@+id/imageVector"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_184pxv"
+                android:layout_height="@dimen/_200pxv"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="@dimen/_10pxv"
                 android:scaleType="fitXY"
