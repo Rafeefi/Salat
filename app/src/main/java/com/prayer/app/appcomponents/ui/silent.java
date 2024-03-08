@@ -40,7 +40,7 @@ public class silent extends AppCompatActivity {
 
             }, 15, 50, true);
 
-
+             dialog.show();
 
             }
 
@@ -65,7 +65,7 @@ public class silent extends AppCompatActivity {
 
                }, 15, 50, true);
 
-
+                dialog.show();
 
                    }
 
