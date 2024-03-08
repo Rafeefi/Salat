@@ -28,7 +28,7 @@ public class silent extends AppCompatActivity {
         startB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimePickerDialog dialog=new TimePickerDialog(com.prayer.app.silent.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog Dialog=new TimePickerDialog(com.prayer.app.silent.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hours, int minutes) {
 
@@ -39,7 +39,7 @@ public class silent extends AppCompatActivity {
 
                 }, 15, 50, true);
 
-             dialog.show();
+             Dialog.show();
 
             }
 
@@ -53,7 +53,7 @@ public class silent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                TimePickerDialog dialog=new TimePickerDialog(com.prayer.app.silent.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog Dialog=new TimePickerDialog(com.prayer.app.silent.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hours, int minutes) {
 
@@ -64,7 +64,7 @@ public class silent extends AppCompatActivity {
 
                 }, 15, 50, true);
 
-                dialog.show();
+                Dialog.show();
 
             }
 
