@@ -35,7 +35,7 @@
                         android:layout_width="296dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
-                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_marginTop="@dimen/_50pxv"
                         android:layout_marginEnd="@dimen/_10pxh"
                         android:gravity="top|center"
                         android:text="@string/msg_salahti_prayer"
@@ -58,7 +58,7 @@
                     android:id="@+id/frameStackvector"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_471pxv"
-                    android:layout_marginTop="@dimen/_32pxv"
+                    android:layout_marginTop="@dimen/_200pxv"
                     android:gravity="start">
 
                     <ImageView

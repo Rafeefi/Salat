@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_13pxh"
-                android:layout_marginTop="@dimen/_30pxv"
+                android:layout_marginTop="@dimen/_100pxv"
                 android:layout_marginEnd="@dimen/_13pxh"
                 android:ellipsize="end"
                 android:gravity="center"
@@ -89,7 +89,7 @@
                 tools:text="@string/lbl_notification" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSilentMode"
+                android:id="@+id/btnTimeCalc"
                 style="@style/btnSolidRounded_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 tools:text="@string/lbl_silentMode" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnPrivacySecurityOne"
+                android:id="@+id/btnGetLocation"
                 style="@style/btnSolidRounded_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,24 +127,7 @@
                 tools:text="@string/msg_ManageLocation" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnAbout"
-                style="@style/btnSolidRounded_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_13pxh"
-                android:layout_marginTop="@dimen/_30pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:singleLine="true"
-                android:text="@string/lbl_about"
-                android:textAllCaps="false"
-                tools:text="@string/lbl_about" />
+
         </LinearLayout>
         <FrameLayout
             android:id="@+id/frameStackvector"

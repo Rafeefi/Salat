@@ -1,5 +1,7 @@
 package com.prayer.app;
 
+import android.Manifest;
+import android.app.Notification;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,32 +11,27 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 
 public class PrayerTimeBroadcast extends BroadcastReceiver {
+    private NotificationManagerCompat notificationManager;
     @Override
     public void onReceive(Context context, Intent intent) {
         String ChannelID = "CHANEL_1";
         int NotificationID = intent.getIntExtra("NotificationID", 0);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ChannelID)
+        Notification notification = new NotificationCompat.Builder(context, ChannelID)
                 .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
                 .setContentTitle("Prayer Time")
                 .setContentText("Reminder for next prayer time")
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
-
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
-
-        //create the channel
-        if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.VIBRATE) == PackageManager.PERMISSION_GRANTED) {
+            // You have permission, proceed with showing the notification
+            notificationManager.notify(NotificationID, notification);
         }
-        notificationManagerCompat.notify(NotificationID, builder.build()); // an ID for every notification
+
     }
+
+
 }
