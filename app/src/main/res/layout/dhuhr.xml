@@ -2,20 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <data/>
     <LinearLayout android:gravity="center_horizontal"
-        android:id="@+id/linearFajrTime"
+        android:id="@+id/lineardhuhrTime"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_margin="@dimen/_4pxv"
         android:orientation="vertical" style="@style/groupStyleblack_900_66cornerRadius">
-        <TextView android:ellipsize="end" android:id="@+id/txtFajr"
+        <TextView android:ellipsize="end" android:id="@+id/txtDhuhr"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_12pxh"
             android:layout_marginStart="@dimen/_12pxh"
             android:layout_marginTop="@dimen/_7pxv"
             android:layout_width="wrap_content"
-            android:singleLine="true" android:text="@string/lbl_fajr"
-            style="@style/txtKanitregular20" tools:text="@string/lbl_fajr"/>
+            android:singleLine="true" android:text="@string/lbl_dhuhr"
+            style="@style/txtKanitregular20" tools:text="@string/lbl_dhuhr"/>
         <TextView android:ellipsize="end"
             android:gravity="center_horizontal"
             android:id="@+id/txtTime"

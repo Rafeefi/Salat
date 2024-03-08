@@ -8,7 +8,7 @@
         <LinearLayout android:id="@+id/linearColumnlanguage"
             android:layout_gravity="top|start"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="@dimen/_22pxv"
+            android:layout_marginBottom="0dp"
             android:layout_marginTop="@dimen/_22pxv"
             android:layout_width="match_parent" android:orientation="vertical">
 
@@ -37,33 +37,39 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerHome"
                 itemSpace="@{@dimen/_34pxh}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="380dp"
+                android:layout_height="183dp"
                 android:layout_marginStart="@dimen/_12pxh"
-                android:layout_marginTop="@dimen/_2pxv"
+                android:layout_marginTop="@dimen/_12pxv"
                 android:layout_marginEnd="@dimen/_12pxh"
                 android:gravity="center_horizontal"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
                 tools:itemCount="6"
-                tools:listitem="@layout/row_home" />
-            <ImageView android:id="@+id/imageVector"
-                android:layout_gravity="top|start"
-                android:layout_height="@dimen/_184pxv"
+                tools:listitem="@layout/dhuhr"
 
+
+                />
+
+            <ImageView
+                android:id="@+id/imageVector"
                 android:layout_width="match_parent"
+                android:layout_height="231dp"
+
+                android:layout_gravity="top|start"
                 android:scaleType="fitXY"
                 android:src="@drawable/img_vector"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_vector"/>
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_vector" />
 
             <LinearLayout
                 android:id="@+id/linearColumnturnnotificati"
                 style="@style/groupStylecyan_802"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="301dp"
+                android:background="@drawable/img_rectangle24"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:background="@drawable/img_rectangle24">
+                android:orientation="vertical">
 
 
                 <FrameLayout
@@ -130,11 +136,11 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerHome1"
-                    itemSpace="@{@dimen/_16pxh}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15pxh"
-                    android:layout_marginTop="@dimen/_16pxv"
+                    itemSpace="@{@dimen/_17dp}"
+                    android:layout_width="371dp"
+                    android:layout_height="66dp"
+                    android:layout_marginStart="@dimen/_16pxh"
+                    android:layout_marginTop="@dimen/_17pxv"
                     android:layout_marginEnd="@dimen/_15pxh"
                     android:layout_marginBottom="@dimen/_38pxv"
                     android:gravity="center_horizontal"
