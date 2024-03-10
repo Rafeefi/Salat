@@ -2,11 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.prayer.app">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="false"
@@ -17,23 +21,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Home2"
+            android:exported="true" />
 
-        <activity android:name=".Splash"
+        <activity
+            android:name=".Splash"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Privacy"
             android:exported="false" />
 
-
-
-        <receiver android:name=".PrayerTimeBroadcast"/>
-        <receiver android:name=".SilentModeBroadcast"/>
+        <receiver android:name=".PrayerTimeBroadcast" />
+        <receiver android:name=".SilentModeBroadcast" />
     </application>
 
 </manifest>

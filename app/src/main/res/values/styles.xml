@@ -97,6 +97,6 @@
         <item name="android:background">@drawable/rectangle_bg_black_900_66_radius_15</item>
     </style>
     <style name="groupStylecyan_100">
-        <item name="android:background">@drawable/rectangle_bg_cyan_100</item>
+        <item name="android:background">@drawable/PrayerAppBackground</item>
     </style>
 </resources>

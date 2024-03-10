@@ -303,28 +303,6 @@
 
         </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageVector"
-        android:layout_width="match_parent"
-        android:layout_height="177dp"
-        android:layout_gravity="top|start"
-        android:scaleType="fitXY"
-        android:src="@drawable/img_vector"
-        app:layout_constraintBottom_toTopOf="@+id/imageRectangleTwentyFour"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/img_vector" />
-
-    <ImageView
-        android:id="@+id/imageRectangleTwentyFour"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:layout_gravity="bottom|start"
-        android:imageRes="@{@drawable/img_rectangle24}"
-        android:scaleType="fitXY"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/img_rectangle24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
