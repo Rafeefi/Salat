@@ -7,17 +7,17 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ManageLocation extends AppCompatActivity {
-    ImageView back ;
+public class TimeCalculations extends AppCompatActivity {
+    ImageView back;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.manage_location);
-        back = findViewById(R.id.imageBack);
+        setContentView(R.layout.time_calculations);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goBack();
-                }
+            }
         });
     }
 
@@ -25,4 +25,5 @@ public class ManageLocation extends AppCompatActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
+
 }
