@@ -1,7 +1,6 @@
 package com.prayer.app;
 
 public class PrayerTime {
-
     String name;
     String time;
     boolean next;
@@ -40,3 +39,5 @@ public class PrayerTime {
         this.next = next;
     }
 }
+
+

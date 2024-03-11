@@ -21,7 +21,7 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".Home2"
+            android:name=".MainActivity"
             android:exported="true" />
 
         <activity

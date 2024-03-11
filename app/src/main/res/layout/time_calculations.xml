@@ -6,10 +6,11 @@
         android:id="@+id/linearSettings"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical" style="@style/groupStylecyan_100">
+        android:orientation="vertical" style="@style/groupStylecyan_100"
+        tools:context=".TimeCalculationsActivity">
 
         <LinearLayout
-            android:id="@+id/linearSettingsf"
+            android:id="@+id/linearSettings2"
             android:layout_width="match_parent"
             android:layout_height="425dp"
             android:layout_marginStart="@dimen/_40pxh"
@@ -66,88 +67,15 @@
                         android:src="@drawable/img_search"
                         tools:ignore="ContentDescription"
                         tools:src="@drawable/img_search" />
+
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
 
-
-            <Switch
-                android:id="@+id/notification"
-                style="@style/txtPoppinsbold14"
+            <FrameLayout
+                android:id="@+id/fragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_30pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:text="Manual Settings " />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:text="Calculate prayer times based on preferred parameters." />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/JuristicMethod"
-                style="@style/txtPoppinsbold14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_20pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:text="Juristic Method" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/Conventions"
-                style="@style/txtPoppinsbold14"
-                android:layout_width="316dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_20pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:text="@string/conventions" />
-
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/TimeFormat"
-                style="@style/txtPoppinsbold14"
-                android:layout_width="316dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_marginTop="@dimen/_20pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_13pxv"
-                android:paddingEnd="@dimen/_30pxh"
-                android:paddingBottom="@dimen/_13pxv"
-                android:text="Time Format" />
+                android:layout_height="match_parent">
+            </FrameLayout>
 
 
         </LinearLayout>

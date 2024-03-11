@@ -5,7 +5,8 @@
         android:id="@+id/linearColumnsalahtiprayer"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical" style="@style/groupStylecyan_100">
+        android:orientation="vertical" style="@style/groupStylecyan_100"
+        >
 
         <ScrollView
             android:id="@+id/scrollViewScrollview"
@@ -41,8 +42,8 @@
 
                     <ImageView
                         android:id="@+id/imageSearch"
-                        android:layout_width="@dimen/_26pxh"
-                        android:layout_height="@dimen/_26pxh"
+                        android:layout_width="@dimen/_30pxh"
+                        android:layout_height="@dimen/_30pxh"
                         android:layout_marginStart="@dimen/_100pxh"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_search"
@@ -78,6 +79,7 @@
                         android:layout_height="wrap_content"
                         android:text="Start Compass" />
                 </LinearLayout>
+
 
             </LinearLayout>
 

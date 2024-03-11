@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import com.prayer.app.HomePage;
+
 public class Splash  extends Activity {
     Handler handler;
 
@@ -19,7 +19,7 @@ public class Splash  extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash.this, Home2.class);
+                Intent intent = new Intent(Splash.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
