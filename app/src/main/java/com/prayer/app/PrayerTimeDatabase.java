@@ -23,14 +23,12 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME + " (email TEXT PRIMARY KEY, password TEXT) ");
-        sqLiteDatabase.execSQL("create table prayer_time (name TEXT,time TEXT);");
+        sqLiteDatabase.execSQL("create table "+ TABLE_NAME + " (name TEXT,time TEXT);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + "prayer_time");
         onCreate(sqLiteDatabase);
 
     }
@@ -40,7 +38,7 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("time", time);
-        long result = db.insert("prayer_time", null, contentValues);
+        long result = db.insert(TABLE_NAME, null, contentValues);
         if (result == -1) return false;
         else
             return true;
@@ -56,7 +54,7 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
         db.beginTransaction();
 
         try {
-            cur = db.query("prayer_time", new String[]{}, null, null, null, null, null);
+            cur = db.query(TABLE_NAME, new String[]{}, null, null, null, null, null);
             if (cur != null) {
                 if (cur.moveToFirst()) {
                     do {

@@ -2,25 +2,20 @@ package com.prayer.app;
 
 
 
-import android.app.AlarmManager;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 
-public class timeCalculations extends PreferenceFragment {
+public class timeCalculationsFragment extends PreferenceFragment {
 
     // list prefs
     public static final String PREF_JURISTIC = "juristic";
@@ -34,6 +29,7 @@ public class timeCalculations extends PreferenceFragment {
     private int RG2 = 4;
     private int RG3 = 0;
     private int RG4 = 1;
+    ImageView back ;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
