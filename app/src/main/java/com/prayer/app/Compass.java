@@ -110,10 +110,10 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
 
     private void dialogError(final Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(context.getString(com.hassanjamil.hqibla.R.string.dialog_title));
+        builder.setTitle(context.getString(R.string.dialog_title));
         builder.setCancelable(false);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.setMessage(context.getString(com.hassanjamil.hqibla.R.string.dialog_message_sensor_not_exist));
+        builder.setMessage(context.getString(R.string.dialog_message_sensor_not_exist));
         builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
