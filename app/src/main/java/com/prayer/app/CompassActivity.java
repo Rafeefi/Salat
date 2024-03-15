@@ -3,10 +3,13 @@ package com.prayer.app;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
+import android.media.RouteListingPreference;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -16,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -216,7 +220,7 @@ public class CompassActivity extends AppCompatActivity {
         if (permission_granted) {
             getBearing();
         } else {
-            /*tvAngle.setText(getResources().getString(R.string.msg_permission_not_granted_yet));
+            tvAngle.setText(getResources().getString(R.string.msg_permission_not_granted_yet));
             tvYourLocation.setText(getResources().getString(R.string.msg_permission_not_granted_yet));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 ActivityCompat.requestPermissions(this,
@@ -225,7 +229,7 @@ public class CompassActivity extends AppCompatActivity {
                         RC_Permission);
             } else {
                 fetch_GPS();
-            }*/
+            }
         }
 
 
@@ -234,14 +238,14 @@ public class CompassActivity extends AppCompatActivity {
 
             @Override
             public void onNewAzimuth(float azimuth) {
-                //    adjustGambarDial(azimuth);
+                //   adjustGambarDial(azimuth);
                 adjustArrowQiblat(azimuth);//this works but crooked
             }
         };
         compass.setListener(cl);
 
         ////////////// ADDED CODE ///////////////
-        //fetch_GPS();
+        fetch_GPS();
     }
 
 
@@ -294,10 +298,10 @@ public class CompassActivity extends AppCompatActivity {
             String strKaabaDirection = String.format(Locale.ENGLISH, "%.0f", kaabaDegs)
                     + " " + getResources().getString(R.string.degree) + " " + getDirectionString(kaabaDegs);
             tvAngle.setText(strKaabaDirection);
-            // MenuItem item = menu.findItem(R.id.gps);
-            //if (item != null) {
-            //item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-            //}
+             MenuItem item = menu.findItem(R.id.gps);
+            if (item != null) {
+            item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
+            }
             qiblatIndicator.setVisibility(View.VISIBLE);
         } else {
             fetch_GPS();
@@ -353,7 +357,7 @@ public class CompassActivity extends AppCompatActivity {
     }
 
 
-    /*public void SaveString(String Judul, String tex) {
+    public void SaveString(String Judul, String tex) {
         SharedPreferences.Editor edit = prefs.edit();
         edit.putString(Judul, tex);
         edit.apply();
@@ -361,7 +365,7 @@ public class CompassActivity extends AppCompatActivity {
 
     public String GetString(String Judul) {
         return prefs.getString(Judul, "");
-    }*/
+    }
 
     public void SaveBoolean(String Judul, Boolean bbb) {
         SharedPreferences.Editor edit = prefs.edit();
@@ -373,7 +377,7 @@ public class CompassActivity extends AppCompatActivity {
         return prefs.getBoolean(Judul, false);
     }
 
-   /* public void Savelong(String Judul, Long bbb) {
+   /public void Savelong(String Judul, Long bbb) {
         SharedPreferences.Editor edit = prefs.edit();
         edit.putLong(Judul, bbb);
         edit.apply();
@@ -382,7 +386,7 @@ public class CompassActivity extends AppCompatActivity {
     public Long Getlong(String Judul) {
         Long xxxxxx = prefs.getLong(Judul, 0);
         return xxxxxx;
-    }*/
+    }
 
     public void SaveFloat(String Judul, Float bbb) {
         SharedPreferences.Editor edit = prefs.edit();
@@ -396,13 +400,13 @@ public class CompassActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //MenuInflater inflater = getMenuInflater();
-        // this.menu = menu;
-        // menu.getItem(0). setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-        // getMenuInflater().inflate(R.menu.gps, menu);
-        // MenuItem item = menu.findItem(R.id.gps);
-        //inflater.inflate(R.menu.gps, menu);
-        //item = menu.findItem(R.id.gps);
+        MenuInflater inflater = getMenuInflater();
+         this.menu = menu;
+         menu.getItem(0). setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
+         getMenuInflater().inflate(R.menu.gps, menu);
+         MenuItem item = menu.findItem(R.id.gps);
+        inflater.inflate(R.menu.gps, menu);
+        item = menu.findItem(R.id.gps);
         return true;
     }
 
@@ -411,46 +415,47 @@ public class CompassActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
         // Handle presses on the action bar items
-        /*switch (item.getItemId()) {
+        switch (item.getItemId()){
             case R.id.gps:
                 //logout code
                 fetch_GPS();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }*/
+        }
     }
 
     public void fetch_GPS() {
         double result;
         gps = new GPSTracker(this);
+        MenuItem item = null;
         if (gps.canGetLocation()) {
-            double myLat = gps.getLatitude();
-            double myLng = gps.getLongitude();
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
             // \n is for new line
             String strYourLocation = getResources().getString(R.string.your_location)
-                    + " " + myLat + ", " + myLng;
+                    + " " + latitude + ", " + longitude;
             tvYourLocation.setText(strYourLocation);
-            //Toast.makeText(getApplicationContext(), "Lokasi anda: - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Lokasi anda: - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
             Log.e("TAG", "GPS is on");
-            if (myLat < 0.001 && myLng < 0.001) {
-                // qiblatIndicator.isShown(false);
+            if (latitude < 0.001 && longitude < 0.001) {
+                qiblatIndicator.isShown();
                 qiblatIndicator.setVisibility(INVISIBLE);
                 qiblatIndicator.setVisibility(View.GONE);
                 tvAngle.setText(getResources().getString(R.string.location_not_ready));
                 tvYourLocation.setText(getResources().getString(R.string.location_not_ready));
-                /*if (item != null) {
+                if (item != null) {
                     item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-                }*/
-                // Toast.makeText(getApplicationContext(), "Location not ready, Please Restart Application", Toast.LENGTH_LONG).show();
+                }
+                 Toast.makeText(getApplicationContext(), "Location not ready, Please Restart Application", Toast.LENGTH_LONG).show();
             } else {
-                /*if (item != null) {
+                if (item != null) {
                     item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_on));
-                }*/
+                }
                 double kaabaLng = 39.826206; // ka'bah Position https://www.latlong.net/place/kaaba-mecca-saudi-arabia-12639.html
                 double kaabaLat = Math.toRadians(21.422487); // ka'bah Position https://www.latlong.net/place/kaaba-mecca-saudi-arabia-12639.html
-                double myLatRad = Math.toRadians(myLat);
-                double longDiff = Math.toRadians(kaabaLng - myLng);
+                double myLatRad = Math.toRadians(latitude);
+                double longDiff = Math.toRadians(kaabaLng - longitude);
                 double y = Math.sin(longDiff) * Math.cos(kaabaLat);
                 double x = Math.cos(myLatRad) * Math.sin(kaabaLat) - Math.sin(myLatRad) * Math.cos(kaabaLat) * Math.cos(longDiff);
                 result = (Math.toDegrees(Math.atan2(y, x)) + 360) % 360;
@@ -460,7 +465,7 @@ public class CompassActivity extends AppCompatActivity {
                 tvAngle.setText(strKaabaDirection);
                 qiblatIndicator.setVisibility(View.VISIBLE);
 
-                /*Location kaaba = new Location("Kaaba");
+                Location kaaba = new Location("Kaaba");
                 kaaba.setLatitude(39.826206);
                 kaaba.setLongitude(21.422487);
                 Location currentLocation = gps.getLocation();
@@ -470,25 +475,25 @@ public class CompassActivity extends AppCompatActivity {
                         bearTo = bearTo + 360;
 
 
-                }*/
+                }
             }
-            //  Toast.makeText(getApplicationContext(), "lat_saya: "+lat_saya + "\nlon_saya: "+lon_saya, Toast.LENGTH_LONG).show();
+              Toast.makeText(getApplicationContext(), "lat_saya: "+lat_saya + "\nlon_saya: "+lon_saya, Toast.LENGTH_LONG).show();
         } else {
             // can't get location
             // GPS or Network is not enabled
             // Ask user to enable GPS/network in settings
             gps.showSettingsAlert();
 
-            // qiblatIndicator.isShown(false);
+             qiblatIndicator.isShown();
             qiblatIndicator.setVisibility(INVISIBLE);
             qiblatIndicator.setVisibility(View.GONE);
             tvAngle.setText(getResources().getString(R.string.pls_enable_location));
             tvYourLocation.setText(getResources().getString(R.string.pls_enable_location));
-            /*if (item != null) {
+            if (item != null) {
                 item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
 
-            }*/
-            // Toast.makeText(getApplicationContext(), "Please enable Location first and Restart Application", Toast.LENGTH_LONG).show();
+            }
+             Toast.makeText(getApplicationContext(), "Please enable Location first and Restart Application", Toast.LENGTH_LONG).show();
         }
     }
     ////////////////////////////////////

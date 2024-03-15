@@ -69,7 +69,7 @@
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
 
-            <com.hassanjamil.hqibla.QiblaCompass
+            <QiblaCompass
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                 custom:dialSrc="@drawable/dial"
                 custom:qiblaSrc="@drawable/qibla"/>
             <RelativeLayout
-                android:id="map"
+                android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="15dp"
