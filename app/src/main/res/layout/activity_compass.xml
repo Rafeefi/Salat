@@ -5,6 +5,7 @@
         android:id="@+id/linearSettings"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        tools:context=".Compass"
         android:orientation="vertical" style="@style/groupStylecyan_100">
 
         <LinearLayout
@@ -67,6 +68,76 @@
                         tools:src="@drawable/img_search" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
+
+            <com.hassanjamil.hqibla.QiblaCompass
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                custom:dialSrc="@drawable/dial"
+                custom:qiblaSrc="@drawable/qibla"/>
+            <RelativeLayout
+                android:id="map"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+                <ImageView
+                    android:id="@+id/dial"
+                    android:layout_width="@dimen/dial"
+                    android:layout_height="@dimen/dial"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/compass_dial"
+                    android:src="@drawable/dial"
+                    android:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/qibla_indicator"
+                    android:layout_width="@dimen/qibla"
+                    android:layout_height="@dimen/qibla"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/compass_hands"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/qibla"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/angle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/footer_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/bottom_image"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:contentDescription="@string/footer_image"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/footer" />
+
+                <TextView
+                    android:id="@+id/your_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_alignParentBottom="true" />
+            </RelativeLayout>-->
         </LinearLayout>
     </LinearLayout>
 </layout>
