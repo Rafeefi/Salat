@@ -110,10 +110,10 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
 
     private void dialogError(final Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(context.getString(R.values.string.dialog_title));
+        builder.setTitle(context.getString(com.hassanjamil.hqibla.R.string.dialog_title));
         builder.setCancelable(false);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.setMessage(context.getString(R.values.strings.dialog_message_sensor_not_exist));
+        builder.setMessage(context.getString(com.hassanjamil.hqibla.R.string.dialog_message_sensor_not_exist));
         builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -179,12 +179,10 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
                 }
             }
 
-            boolean hasAS = false;
-            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            /*if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                 System.arraycopy(event.values, 0, aData, 0, 3);
                 hasAS = true;
             }
-            boolean hasMS = false;
             if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
                 System.arraycopy(event.values, 0, mData, 0, 3);
                 hasMS = true;
@@ -193,7 +191,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
             if (hasAS && hasMS) {
                 float[] I = new float[9];
                 float[] R = new float[9];
-                 success = SensorManager.getRotationMatrix(R, I, aData, mData);
+                boolean success = SensorManager.getRotationMatrix(R, I, aData, mData);
 
                 if (success) {
                     float[] O = new float[3];
@@ -208,7 +206,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
                     }
                     // do something with the rotation in degrees
                 }
-            }
+            }*/
         }
     }
 

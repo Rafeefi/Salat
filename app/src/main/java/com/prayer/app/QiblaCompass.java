@@ -43,7 +43,7 @@ public class QiblaCompass extends FrameLayout {
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View parent = inflater.inflate(R.layout.view_qibla_compass, this, true);
+        View parent = inflater.inflate(R.layout.activity_compass, this, true);
 
         RelativeLayout.LayoutParams lpDial = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

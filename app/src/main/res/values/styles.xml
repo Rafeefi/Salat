@@ -99,7 +99,9 @@
     <style name="groupStylecyan_100">
         <item name="android:background">@drawable/prayerappbackground</item>
     </style>
-    <style name="toolbar" parent="AppTheme">
+
+
+    <style name="toolbar" parent="">
         <item name="android:background">@color/white</item>
     </style>
 </resources>
