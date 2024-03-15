@@ -23,6 +23,9 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view_qibla_compass"
+            android:exported="false" />
+        <activity
             android:name=".Compass"
             android:exported="true" />
         <activity
