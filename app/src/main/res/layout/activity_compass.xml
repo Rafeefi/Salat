@@ -72,23 +72,16 @@
             </androidx.appcompat.widget.Toolbar>
 
 
+        <include layout="@layout/view_qibla_compass"/>
 
-            <QiblaCompass
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                custom:dialSrc="@drawable/dial"
-                custom:qiblaSrc="@drawable/qibla"/>
             <RelativeLayout
-                android:id=""
+                android:id="@id/layout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center_vertical"
-                app:layout_constraintTop_toBottomOf="@id/toolbar">
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                tools:ignore="InvalidId">
 
                 <ImageView
                     android:id="@+id/dial"
