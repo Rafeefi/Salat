@@ -397,7 +397,7 @@ public class CompassActivity extends AppCompatActivity {
     public Float GetFloat(String Judul) {
         return prefs.getFloat(Judul, 0);
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -405,7 +405,7 @@ public class CompassActivity extends AppCompatActivity {
          menu.getItem(0). setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
          getMenuInflater().inflate(R.menu.gps, menu);
          MenuItem item = menu.findItem(R.id.gps);
-        inflater.inflate(R.menu.gps, menu);
+        inflater.inflate(R.menu.menu_compass, menu);
         item = menu.findItem(R.id.gps);
         return true;
     }
@@ -423,7 +423,7 @@ public class CompassActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     public void fetch_GPS() {
         double result;

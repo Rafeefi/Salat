@@ -71,15 +71,7 @@
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                style="@style/toolbar"
-                app:navigationIcon="@drawable/ic_arrow_back"
-                android:elevation="4dp"
-                app:title="@string/app_name"
-                app:layout_constraintTop_toTopOf="parent"/>
+
 
             <QiblaCompass
                 android:layout_width="wrap_content"
@@ -150,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_alignParentBottom="true" />
-            </RelativeLayout>-->
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 </layout>
