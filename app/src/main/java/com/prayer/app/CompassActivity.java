@@ -70,12 +70,12 @@ public class CompassActivity extends AppCompatActivity {
         //////////////////////////////////////////
         qiblatIndicator = findViewById(R.id.qibla_indicator);
         imageDial = findViewById(R.id.dial);
-        //tvAngle = findViewById(R.id.angle);
-        //tvYourLocation = findViewById(R.id.your_location);
+        tvAngle = findViewById(R.id.angle);
+        tvYourLocation = findViewById(R.id.your_location);
 
         //////////////////////////////////////////
-        /*qiblatIndicator.setVisibility(INVISIBLE);
-        qiblatIndicator.setVisibility(View.GONE);*/
+        qiblatIndicator.setVisibility(INVISIBLE);
+        qiblatIndicator.setVisibility(View.GONE);
 
         setupCompass();
     }
