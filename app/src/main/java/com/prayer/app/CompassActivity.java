@@ -477,7 +477,7 @@ public class CompassActivity extends AppCompatActivity {
 
                 }
             }
-              Toast.makeText(getApplicationContext(), "lat_saya: "+lat_saya + "\nlon_saya: "+lon_saya, Toast.LENGTH_LONG).show();
+              Toast.makeText(getApplicationContext(), "latitude: "+latitude + "\nlongtitude: "+longitude, Toast.LENGTH_LONG).show();
         } else {
             // can't get location
             // GPS or Network is not enabled
