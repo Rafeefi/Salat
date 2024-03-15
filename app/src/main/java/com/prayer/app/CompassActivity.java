@@ -377,7 +377,7 @@ public class CompassActivity extends AppCompatActivity {
         return prefs.getBoolean(Judul, false);
     }
 
-   /public void Savelong(String Judul, Long bbb) {
+   public void Savelong(String Judul, Long bbb) {
         SharedPreferences.Editor edit = prefs.edit();
         edit.putLong(Judul, bbb);
         edit.apply();
@@ -412,7 +412,7 @@ public class CompassActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+         super.onOptionsItemSelected(item);
 
         // Handle presses on the action bar items
         switch (item.getItemId()){
