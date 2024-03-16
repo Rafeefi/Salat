@@ -24,14 +24,12 @@ import android.hardware.SensorManager;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
-public class Compass extends AppCompatActivity implements SensorEventListener {
+public class Compass implements SensorEventListener {
     private static final String TAG = Compass.class.getSimpleName();
     public interface CompassListener {
         void onNewAzimuth(float azimuth);
     }
 
-    ImageView back ;
-    ImageView settings ;
     private CompassListener listener;
 
     private SensorManager sensorManager;
@@ -50,39 +48,6 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
 
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compass);
-        settings  = findViewById(R.id.imageSettings);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToSettings();
-            }
-        });
-
-        back = findViewById(R.id.imageBack);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
-        });
-
-
-
-    }
-
-    private void goToSettings() {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-    }
-
-    private void goBack() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
     public Compass(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         asensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

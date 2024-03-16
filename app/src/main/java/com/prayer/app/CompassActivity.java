@@ -35,6 +35,8 @@ import static android.view.View.INVISIBLE;
 
 
 public class CompassActivity extends AppCompatActivity {
+    ImageView back ;
+    ImageView settings ;
     private static final String TAG = CompassActivity.class.getSimpleName();
     private Compass compass;
     private ImageView qiblatIndicator;
@@ -52,6 +54,21 @@ public class CompassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compass);
+        settings  = findViewById(R.id.imageSettings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToSettings();
+            }
+        });
+
+        back = findViewById(R.id.imageBack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
 
         setUserChanges(getIntent());
 
@@ -78,6 +95,15 @@ public class CompassActivity extends AppCompatActivity {
         qiblatIndicator.setVisibility(View.GONE);
 
         setupCompass();
+    }
+    private void goToSettings() {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+
+    private void goBack() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
