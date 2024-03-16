@@ -35,7 +35,7 @@ import android.widget.Toast;
 
 
 import com.prayer.app.R;
-
+//
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
     double longitude;
     private AudioManager myAudioManager;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
-//ImageView settings ;
+View settings ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        View settings = findViewById(R.id.imageSearch);
+        settings = findViewById(R.id.imageSearch);
         //Runtime permissions
         if (ContextCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
