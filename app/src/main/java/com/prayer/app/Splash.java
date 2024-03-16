@@ -19,7 +19,7 @@ public class Splash  extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash.this, MainActivity.class);
+                Intent intent = new Intent(Splash.this,CompassActivity.class);
                 startActivity(intent);
                 finish();
             }
