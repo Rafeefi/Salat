@@ -44,13 +44,13 @@ ImageView settings ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home2);
        // settings = findViewById(R.id.imageSearch);
         //Runtime permissions
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION
+                    Manifest.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
             }, 100);
         }
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
