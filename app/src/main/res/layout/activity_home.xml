@@ -30,11 +30,21 @@
                     android:text="@string/msg_16_february_20"
                     tools:text="@string/msg_16_february_20" />
 
+
+                <ImageView
+                    android:id="@+id/imageCompass"
+                    android:src="@drawable/compass"
+                    android:layout_width="32.1dp"
+                    android:layout_height="@dimen/_30pxh"
+                    android:layout_marginLeft="80dp"
+                    />
+
+
                 <ImageView
                     android:id="@+id/imageSearch"
                     android:layout_width="@dimen/_30pxh"
                     android:layout_height="@dimen/_30pxh"
-                    android:layout_marginStart="@dimen/_100pxh"
+                    android:layout_marginStart="10dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_search"
                     tools:ignore="ContentDescription"
@@ -64,23 +74,7 @@
                 app:spanCount="3"
                 tools:itemCount="6"
                 tools:listitem="@layout/row_home" />
-            <ImageView android:id="@+id/imageVector"
-                android:layout_gravity="top|start"
-                android:layout_height="@dimen/_184pxv"
 
-                android:layout_width="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/img_vector"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_vector"/>
-
-            <LinearLayout
-                android:id="@+id/linearColumnturnnotificati"
-                style="@style/groupStylecyan_802"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:background="@drawable/img_rectangle24"/>
         </LinearLayout>
     </FrameLayout>
 </layout>
