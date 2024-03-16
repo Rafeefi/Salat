@@ -46,8 +46,7 @@ public class Compass implements SensorEventListener {
     private float currentAzimuth;
     private SharedPreferences prefs;
 
-    public Compass() {
-    }
+
 
     public Compass(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -81,7 +80,7 @@ public class Compass implements SensorEventListener {
         builder.setTitle("Alert");
         builder.setCancelable(false);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.setMessage("Your device doesnt have the required sensors");
+        builder.setMessage("Your device doesn't have the required sensors");
         builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
