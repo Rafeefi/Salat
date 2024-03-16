@@ -1,6 +1,8 @@
 package com.prayer.app;
 
 
+import  android.Manifest;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -47,10 +49,10 @@ ImageView settings ;
         setContentView(R.layout.activity_home2);
        // settings = findViewById(R.id.imageSearch);
         //Runtime permissions
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION)
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                    Manifest.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+                    Manifest.permission.ACCESS_FINE_LOCATION
             }, 100);
         }
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -359,7 +361,7 @@ ImageView settings ;
         }
         times.setHasFixedSize(true);
 
-        adapter = new TimeViewAdapter(MainActivity.this, list);
+      //  adapter = new TimeViewAdapter(MainActivity.this, list);
 
         times.setAdapter(adapter);
         adapter.notifyDataSetChanged();
