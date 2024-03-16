@@ -1,24 +1,40 @@
 package com.prayer.app;
 
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
+
+
+import com.prayer.app.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +42,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 
@@ -40,17 +58,17 @@ public class MainActivity extends AppCompatActivity {
     double longitude;
     private AudioManager myAudioManager;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
-ImageView settings ;
+//ImageView settings ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-       // settings = findViewById(R.id.imageSearch);
+        View settings = findViewById(R.id.imageSearch);
         //Runtime permissions
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION
+                    ACCESS_FINE_LOCATION
             }, 100);
         }
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);

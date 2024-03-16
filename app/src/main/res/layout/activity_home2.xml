@@ -50,6 +50,7 @@
                         tools:ignore="ContentDescription"
                         tools:src="@drawable/img_search" />
                 </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/linearRowsettings2"
                         android:layout_width="match_parent"
