@@ -44,6 +44,8 @@
             android:exported="true"/>
         <activity android:name=".Settings"
             android:exported="true"/>
+        <activity android:name=".CompassActivity"
+            android:exported="true"/>
 
 
         <receiver android:name=".PrayerTimeBroadcast" />
