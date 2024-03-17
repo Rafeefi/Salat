@@ -185,14 +185,14 @@ public class CompassActivity extends AppCompatActivity {
                                     ContextCompat.getColor(this, R.color.app_red))));*/
 
             //Qibla Degrees Text Color
-            ((TextView) findViewById(R.id.angle)).setTextColor(
+           /* ((TextView) findViewById(R.id.angle)).setTextColor(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.ANGLE_TEXT_COLOR)) ?
                             Color.parseColor(intent.getExtras().getString(Constants.ANGLE_TEXT_COLOR)) :
                             Color.parseColor("#" + Integer.toHexString(
                                     ContextCompat.getColor(this, android.R.color.white))));
 
-            /*// Dial
+            / Dial
             ((ImageView) findViewById(R.id.dial)).setImageResource(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.DRAWABLE_DIAL)) ?
@@ -211,10 +211,10 @@ public class CompassActivity extends AppCompatActivity {
                             intent.getExtras().getInt(Constants.FOOTER_IMAGE_VISIBLE) : View.VISIBLE);*/
 
              //Your Location TextView
-            findViewById(R.id.your_location).setVisibility(
+            /*findViewById(R.id.your_location).setVisibility(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.LOCATION_TEXT_VISIBLE)) ?
-                            intent.getExtras().getInt(Constants.LOCATION_TEXT_VISIBLE) : View.VISIBLE);
+                            intent.getExtras().getInt(Constants.LOCATION_TEXT_VISIBLE) : View.VISIBLE);*/
 
         } catch (Exception e) {
             e.printStackTrace();
