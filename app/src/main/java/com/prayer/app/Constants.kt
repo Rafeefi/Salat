@@ -1,4 +1,4 @@
-package com.hassanjamil.hqibla
+package com.prayer.app
 
 object Constants {
     const val TOOLBAR_BG_COLOR = "toolbar_bg_color"
