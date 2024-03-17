@@ -55,11 +55,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_41pxh"
                 android:layout_marginStart="@dimen/_41pxh"
-                android:layout_marginTop="@dimen/_6pxv"
+                android:layout_marginTop="@dimen/_10pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
                 android:text="@string/lbl_25_rajab_1444"
                 style="@style/txtKanitregular20" tools:text="@string/lbl_25_rajab_1444"/>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerHome"
@@ -67,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12pxh"
-                android:layout_marginTop="@dimen/_2pxv"
+                android:layout_marginTop="@dimen/_100pxv"
                 android:layout_marginEnd="@dimen/_12pxh"
                 android:gravity="center_horizontal"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

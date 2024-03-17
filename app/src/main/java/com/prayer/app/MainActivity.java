@@ -58,12 +58,15 @@ public class MainActivity extends AppCompatActivity {
     double longitude;
     private AudioManager myAudioManager;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
-View settings ;
+    View settings;
+    View compass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         settings = findViewById(R.id.imageSearch);
+        compass = findViewById(R.id.imageCompass);
         //Runtime permissions
         if (ContextCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -76,15 +79,31 @@ View settings ;
 
 
         refrechTimes();
-       settings.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               goToSettings();
-           }
-       });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToSettings();
+            }
+        });
 
-
+        compass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToCompass();
+            }
+        });
     }
+
+
+
+
+
+
+    private void goToCompass() {
+        Intent intent = new Intent(this,CompassActivity.class);
+        startActivity(intent);
+    }
+
     private void refrechTimes(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
