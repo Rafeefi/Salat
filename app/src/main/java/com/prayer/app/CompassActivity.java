@@ -73,13 +73,7 @@ public class CompassActivity extends AppCompatActivity {
         setUserChanges(getIntent());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(ContextCompat.getDrawable(this, R.drawable.ic_arrow_back));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
         /////////////////////////////////////////////////
         prefs = getSharedPreferences("", MODE_PRIVATE);
         gps = new GPSTracker(this);
