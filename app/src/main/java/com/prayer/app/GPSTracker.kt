@@ -58,7 +58,7 @@ class GPSTracker(private val mContext: Context) : Service(), LocationListener {
                 }
                 // if GPS Enabled get lat/long using GPS Services
                 if (isGPSEnabled) {
-                    if (location == null) {
+                    if (location != null) {
                         locationManager?.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
                             MIN_TIME_BW_UPDATES,
@@ -169,7 +169,7 @@ class GPSTracker(private val mContext: Context) : Service(), LocationListener {
     }
 
     init {
-        //location = getLocation() //watchthis
+        location = getLocation()
     }
 
 }
