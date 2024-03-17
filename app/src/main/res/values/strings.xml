@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">prayertimeapp</string>
+    <string name="app_name">Salati</string>
     <string name="compass">Compass</string>
     <string name="calc">Time Calculations </string>
     <string name="loading">Loading…</string>
