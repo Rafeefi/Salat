@@ -508,6 +508,7 @@ class PrayTime {
     private int[] offsets;
 
     public PrayTime() {
+        // try this when wanting to fix time calculations --Leen
         // Initialize vars
         //   settings_Activity s =new settings_Activity();
 
