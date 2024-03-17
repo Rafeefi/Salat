@@ -190,13 +190,13 @@ public class CompassActivity extends AppCompatActivity {
                             Color.parseColor("#" + Integer.toHexString(
                                     ContextCompat.getColor(this, R.color.app_red))));*/
 
-            // Qibla Degrees Text Color
-            /*((TextView) findViewById(R.id.angle)).setTextColor(
+            //Qibla Degrees Text Color
+            ((TextView) findViewById(R.id.angle)).setTextColor(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.ANGLE_TEXT_COLOR)) ?
                             Color.parseColor(intent.getExtras().getString(Constants.ANGLE_TEXT_COLOR)) :
                             Color.parseColor("#" + Integer.toHexString(
-                                    ContextCompat.getColor(this, android.R.color.white))));*/
+                                    ContextCompat.getColor(this, android.R.color.white))));
 
             /*// Dial
             ((ImageView) findViewById(R.id.dial)).setImageResource(
@@ -216,11 +216,11 @@ public class CompassActivity extends AppCompatActivity {
                             intent.getExtras().containsKey(Constants.FOOTER_IMAGE_VISIBLE)) ?
                             intent.getExtras().getInt(Constants.FOOTER_IMAGE_VISIBLE) : View.VISIBLE);*/
 
-            // Your Location TextView
-            /*findViewById(R.id.your_location).setVisibility(
+             //Your Location TextView
+            findViewById(R.id.your_location).setVisibility(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.LOCATION_TEXT_VISIBLE)) ?
-                            intent.getExtras().getInt(Constants.LOCATION_TEXT_VISIBLE) : View.VISIBLE);*/
+                            intent.getExtras().getInt(Constants.LOCATION_TEXT_VISIBLE) : View.VISIBLE);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -462,7 +462,7 @@ public class CompassActivity extends AppCompatActivity {
             String strYourLocation = getResources().getString(R.string.your_location)
                     + " " + latitude + ", " + longitude;
             tvYourLocation.setText(strYourLocation);
-            Toast.makeText(getApplicationContext(), "Lokasi anda: - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Location - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
             Log.e("TAG", "GPS is on");
             if (latitude < 0.001 && longitude < 0.001) {
                 qiblatIndicator.isShown();
