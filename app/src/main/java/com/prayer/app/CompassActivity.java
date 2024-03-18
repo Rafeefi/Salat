@@ -319,9 +319,9 @@ public class CompassActivity extends AppCompatActivity {
                     + " " + getResources().getString(R.string.degree) + " " + getDirectionString(kaabaDegs);
             tvAngle.setText(strKaabaDirection);
             // MenuItem item = menu.findItem(R.id.gps);
-           /* if (item != null) {
-            item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-            }*/
+            //if (item != null) {
+            //item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
+           // }
             qiblatIndicator.setVisibility(View.VISIBLE);
         } else {
             fetch_GPS();
