@@ -318,10 +318,10 @@ public class CompassActivity extends AppCompatActivity {
             String strKaabaDirection = String.format(Locale.ENGLISH, "%.0f", kaabaDegs)
                     + " " + getResources().getString(R.string.degree) + " " + getDirectionString(kaabaDegs);
             tvAngle.setText(strKaabaDirection);
-             MenuItem item = menu.findItem(R.id.gps);
-            if (item != null) {
+            // MenuItem item = menu.findItem(R.id.gps);
+           /* if (item != null) {
             item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-            }
+            }*/
             qiblatIndicator.setVisibility(View.VISIBLE);
         } else {
             fetch_GPS();
