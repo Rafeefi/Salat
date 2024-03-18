@@ -196,13 +196,13 @@ public class CompassActivity extends AppCompatActivity {
             ((ImageView) findViewById(R.id.dial)).setImageResource(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.DRAWABLE_DIAL)) ?
-                            intent.getExtras().getInt(Constants.DRAWABLE_DIAL) : R.drawable.dial);
+                            intent.getExtras().getInt(Constants.DRAWABLE_DIAL) : R.drawable.dial);*/
 
             // Qibla Indicator
             ((ImageView) findViewById(R.id.qibla_indicator)).setImageResource(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.DRAWABLE_QIBLA)) ?
-                            intent.getExtras().getInt(Constants.DRAWABLE_QIBLA) : R.drawable.qibla);*/
+                            intent.getExtras().getInt(Constants.DRAWABLE_QIBLA) : R.drawable.qibla);
 
             // Footer Image
             /*findViewById(R.id.footer_image).setVisibility(
@@ -211,10 +211,10 @@ public class CompassActivity extends AppCompatActivity {
                             intent.getExtras().getInt(Constants.FOOTER_IMAGE_VISIBLE) : View.VISIBLE);*/
 
              //Your Location TextView
-            /*findViewById(R.id.your_location).setVisibility(
+            findViewById(R.id.your_location).setVisibility(
                     (intent.getExtras() != null &&
                             intent.getExtras().containsKey(Constants.LOCATION_TEXT_VISIBLE)) ?
-                            intent.getExtras().getInt(Constants.LOCATION_TEXT_VISIBLE) : View.VISIBLE);*/
+                            intent.getExtras().getInt(Constants.LOCATION_TEXT_VISIBLE) : View.VISIBLE);
 
         } catch (Exception e) {
             e.printStackTrace();
