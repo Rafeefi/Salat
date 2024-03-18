@@ -36,7 +36,7 @@
                     android:src="@drawable/compass"
                     android:layout_width="32.1dp"
                     android:layout_height="@dimen/_30pxh"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="60dp"
                     />
 
 
