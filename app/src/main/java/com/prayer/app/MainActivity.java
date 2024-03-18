@@ -96,14 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-    private void goToCompass() {
-        Intent intent = new Intent(this,CompassActivity.class);
-        startActivity(intent);
-    }
-
     private void refrechTimes(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
@@ -442,13 +434,19 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                long timeInMillis = finalDate.getTime(); // get time in millisecond
-                alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
+                if (finalDate != null) {
+                    long timeInMillis = finalDate.getTime(); // get time in milliseconds
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
+                }
             }
         }
     }
     private void goToSettings() {
         Intent intent=new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+    private void goToCompass() {
+        Intent intent = new Intent(this,CompassActivity.class);
         startActivity(intent);
     }
 }
