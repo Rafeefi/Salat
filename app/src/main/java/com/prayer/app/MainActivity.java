@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 goToSettings();
             }
         });
-
         compass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
