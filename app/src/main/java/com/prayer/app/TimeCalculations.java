@@ -36,12 +36,12 @@ public class TimeCalculations extends AppCompatActivity {
                     .add(R.id.fragment, new timeCalculationsFragment())
                     .commit();
         }
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    goBack();
-                }
-            });
+          //  back.setOnClickListener(new View.OnClickListener() {
+         //       @Override
+            //    public void onClick(View v) {
+           //         goBack();
+             //   }
+          //  });
 
     }
         private void goBack () {
