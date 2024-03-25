@@ -76,6 +76,7 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.github.msarhan:ummalqura-calendar:1.1.9'
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation 'androidx.activity:activity:1.8.0'

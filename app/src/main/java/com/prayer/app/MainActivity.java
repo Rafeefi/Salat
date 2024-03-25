@@ -31,7 +31,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 
 
 import com.prayer.app.R;
@@ -54,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView times;
     RecyclerView.Adapter adapter;
     LocationManager locationManager;
+    TextView date , dateHijri;
     double latitude;
     double longitude;
     private AudioManager myAudioManager;
@@ -65,8 +73,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        date = findViewById(R.id.txtDate);
+        dateHijri =findViewById(R.id.txtDateHijri);
         settings = findViewById(R.id.imageSearch);
         compass = findViewById(R.id.imageCompass);
+        // For Gregorian Calendar
+        Calendar gregorianCalendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String formattedGregorianDate = dateFormat.format(gregorianCalendar.getTime());
+        date.setText(formattedGregorianDate);
+
+        // For Hijri Calendar
+        UmmalquraCalendar ummalquraCalendar = new UmmalquraCalendar();
+        int day = ummalquraCalendar.get(Calendar.DAY_OF_MONTH);
+        int month = ummalquraCalendar.get(Calendar.MONTH) + 1; // Java months are zero-based
+        int year = ummalquraCalendar.get(UmmalquraCalendar.YEAR);
+        String formattedHijriDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", day, month, year);
+        dateHijri.setText(formattedHijriDate);
         //Runtime permissions
         if (ContextCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {

@@ -19,7 +19,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtLanguage"
+                    android:id="@+id/txtDate"
                     style="@style/txtKanitregular20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                     tools:src="@drawable/img_search" />
             </LinearLayout>
 
-            <TextView android:ellipsize="end" android:id="@+id/txtDate"
+            <TextView android:ellipsize="end" android:id="@+id/txtDateHijri"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_41pxh"
                 android:layout_marginStart="@dimen/_41pxh"
