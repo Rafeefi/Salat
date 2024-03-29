@@ -57,16 +57,16 @@
                         tools:text="@string/lbl_settings" />
 
                     <ImageView
-                        android:id="@+id/imageSearch"
+                        android:id="@+id/home"
                         android:layout_width="@dimen/_26pxh"
                         android:layout_height="@dimen/_26pxh"
                         android:layout_marginStart="@dimen/_77pxh"
                         android:layout_marginTop="@dimen/_7pxv"
                         android:layout_marginBottom="@dimen/_2pxv"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_search"
+                        android:src="@drawable/HomeIcon"
                         tools:ignore="ContentDescription"
-                        tools:src="@drawable/img_search" />
+                        tools:src="@drawable/HomeIcon" />
 
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>

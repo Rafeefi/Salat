@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class Settings extends AppCompatActivity {
     Button b1, b2, b3;
     ImageView back ;
+    ImageView home ;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,16 +21,29 @@ public class Settings extends AppCompatActivity {
         b2 =((Button)findViewById(R.id.btnNotification));
         b3= ((Button)findViewById(R.id.btnGetLocation));
         back = findViewById(R.id.imageBack);
+        home = findViewById(R.id.home);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goBack();
             }
         });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToHome();
+            }
+        });
 
 
 
     }
+
+    private void goToHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void Move(View view) {
         int button = ((Button) view).getId();
         if (button == R.id.btnNotification) {

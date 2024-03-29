@@ -23,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class TimeCalculations extends AppCompatActivity {
     ImageView back;
+    ImageView home ;
     public static final String PREF_SILENT = "silent";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -37,6 +38,13 @@ public class TimeCalculations extends AppCompatActivity {
                     .commit();
         }
         back = findViewById(R.id.imageBack);
+        home = findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goHome();
+            }
+        });
           back.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
@@ -45,7 +53,13 @@ public class TimeCalculations extends AppCompatActivity {
             });
 
     }
-        private void goBack () {
+
+    private void goHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void goBack () {
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
         }
