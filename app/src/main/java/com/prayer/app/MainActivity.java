@@ -442,6 +442,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, PrayerTimeReminderReceiver.class);
+
+        for (int i = 0; i < prayerTimes.size(); i++) {
+            // Assume prayerTimes is an ArrayList<String> of prayer times in HH:mm format
+            String prayerTime = prayerTimes.get(i);
+            String prayerName = prayerNames.get(i); // Ensure you have a corresponding ArrayList<String> for prayer names
+
+            // Schedule an alarm for this prayer time
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(prayerTime.split(":")[0]));
+            calendar.set(Calendar.MINUTE, Integer.parseInt(prayerTime.split(":")[1]));
+            calendar.set(Calendar.SECOND, 0);
+
+            // Avoid scheduling for past times
+            if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
+                calendar.add(Calendar.DAY_OF_MONTH, 1);
+            }
+
+            intent.putExtra("prayerName", prayerName); // Pass prayer name to BroadcastReceiver
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, i, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        }
     }
     private void goToSettings() {
         Intent intent=new Intent(this, Settings.class);
