@@ -35,7 +35,7 @@
                     android:layout_marginTop="@dimen/_37pxv"
                     android:layout_width="@dimen/_270pxh"
                     android:scaleType="fitXY"
-                    imageRes="@{@drawable/img_mosque1}"
+                    imageRes="@@drawable/img_mosque1"
                     tools:ignore="ContentDescription" tools:src="@drawable/img_mosque1"/>
             </FrameLayout>
             <androidx.appcompat.widget.AppCompatButton

@@ -45,7 +45,7 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    public ArrayList<PrayerTime> getTimes(String em) {
+    public ArrayList<PrayerTime> getTimes() {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ArrayList<PrayerTime> list = new ArrayList<PrayerTime>();
@@ -73,7 +73,20 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
         return list;
 
     }
+    public String getFajrTime() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String fajrTime = null;
 
+        Cursor cursor = db.rawQuery("SELECT " + COL_2 + " FROM " + TABLE_NAME + " WHERE " + COL_1 + " = 'Fajr'", null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                fajrTime = cursor.getString(0); // Assuming the Fajr time is stored in the first column
+            }
+            cursor.close();
+        }
+
+        return fajrTime;
+    }
 
 }
 

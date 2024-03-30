@@ -252,47 +252,32 @@
                         android:layout_marginTop="@dimen/_1pxv"
                         android:foregroundGravity="center"
                         android:gravity="start|top"
+                        android:onClick="showEndTimePicker"
                         android:translationZ="100dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="@id/linearRowisha">
-
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/StarttimeB"
-                            style="@style/btnSolidRounded_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_40pxh"
-                            android:layout_marginTop="@dimen/_25pxh"
-                            android:layout_marginBottom="@dimen/_100pxv"
-                            android:text="Start time" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/EndtimeB"
-                            style="@style/btnSolidRounded_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_250pxh"
-                            android:layout_marginTop="@dimen/_25pxh"
-                            android:layout_marginBottom="@dimen/_100pxv"
-                            android:text=" End time " />
 
 
                         <TextView
                             android:id="@+id/StarttextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_52pxh"
-                            android:layout_marginTop="@dimen/_100pxv"
+                            android:layout_gravity="center_horizontal|top|left|center_vertical"
+                            android:layout_marginLeft="@dimen/_120pxh"
+                            android:layout_marginTop="@dimen/_40pxv"
                             android:text="hh:mm" />
 
-                        <TextView
-                            android:id="@+id/EndtextView2"
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/StarttimeB"
+                            style="@style/btnSolidRounded_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_267pxh"
-                            android:layout_marginTop="@dimen/_100pxv"
-                            android:text="hh:mm" />
+                            android:layout_gravity="center|clip_vertical|fill_vertical"
+                            android:layout_marginLeft="@dimen/_60pxh"
+                            android:layout_marginTop="@dimen/_25pxh"
+                            android:layout_marginBottom="@dimen/_100pxv"
+                            android:gravity="center"
+                            android:text="Silent time" />
 
 
                     </FrameLayout>

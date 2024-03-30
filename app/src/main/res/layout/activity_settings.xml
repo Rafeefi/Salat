@@ -63,9 +63,9 @@
                         android:layout_marginTop="@dimen/_7pxv"
                         android:layout_marginBottom="@dimen/_2pxv"
                         android:scaleType="fitXY"
-                        android:src="@drawable/HomeIcon"
+                        android:src="@drawable/homeicon"
                         tools:ignore="ContentDescription"
-                        tools:src="@drawable/HomeIcon" />
+                        tools:src="@drawable/homeicon" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
 
