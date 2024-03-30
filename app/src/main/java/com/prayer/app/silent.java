@@ -188,7 +188,6 @@ public class silent extends AppCompatActivity {
             return -1; // Return -1 if parsing fails
         }
     }
-
     // Method to get Fajr time from the database and convert it to milliseconds
     private long getFajrTimeInMillis() {
         PrayerTimeDatabase prayerTimeDatabase = new PrayerTimeDatabase(this);
