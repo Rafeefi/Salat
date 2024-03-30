@@ -177,7 +177,6 @@ public class silent extends AppCompatActivity {
         PrayerTimeDatabase prayerTimeDatabase = new PrayerTimeDatabase(getApplicationContext());
         return prayerTimeDatabase.getFajrTime();
     }
-
     private long parseFajrTimeToMilliseconds(String fajrTime) {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm"); // Assuming the format is "HH:mm"
         try {
