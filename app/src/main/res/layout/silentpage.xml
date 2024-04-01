@@ -13,14 +13,58 @@
             android:layout_width="match_parent"
             android:orientation="vertical" style="@style/groupStylecyan_100">
 
-            <ScrollView
-                android:id="@+id/scrollViewScrollview"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clipToPadding="false"
-                android:fillViewport="true"
-                android:gravity="start">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbarToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    app:contentInsetStart="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearRowsettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_40pxh"
+                        android:layout_marginEnd="@dimen/_39pxh"
+                        android:layout_marginTop="@dimen/_53pxv"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageBack"
+                            android:layout_width="@dimen/_25pxh"
+                            android:layout_height="@dimen/_25pxh"
+                            android:layout_marginTop="@dimen/_8pxv"
+                            android:layout_marginBottom="@dimen/_2pxv"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_settings"
+                            tools:ignore="ContentDescription"
+                            tools:src="@drawable/img_settings" />
+
+                        <TextView
+                            android:id="@+id/txtSettingsOne"
+                            style="@style/txtPoppinsbold24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_50pxh"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="Notifications"
+                            tools:text="Notifications" />
+
+                        <ImageView
+                            android:id="@+id/home"
+                            android:layout_width="@dimen/_26pxh"
+                            android:layout_height="@dimen/_26pxh"
+                            android:layout_marginStart="@dimen/_35pxh"
+                            android:layout_marginTop="@dimen/_7pxv"
+                            android:layout_marginBottom="@dimen/_2pxv"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/homeicon"
+                            tools:ignore="ContentDescription"
+                            tools:src="@drawable/homeicon" />
+                    </LinearLayout>
+                </androidx.appcompat.widget.Toolbar>
+
 
                 <LinearLayout
                     android:id="@+id/linearSplash"
@@ -284,9 +328,9 @@
 
 
                 </LinearLayout>
-            </ScrollView>
+            </LinearLayout>
 
-        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
