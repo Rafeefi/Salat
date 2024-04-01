@@ -1,10 +1,12 @@
 package com.prayer.app;
+
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -18,7 +20,12 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
 
     public PrayerTimeDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
+        if (context == null) {
+            Log.e("PrayerTimeDatabase", "Context is null!");
+        }
+        else {
+            SQLiteDatabase db = this.getWritableDatabase();
+        }
     }
 
     @Override
@@ -89,5 +96,3 @@ public class PrayerTimeDatabase extends SQLiteOpenHelper {
     }
 
 }
-
-

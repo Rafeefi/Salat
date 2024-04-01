@@ -2,9 +2,11 @@ package com.prayer.app;
 
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -453,7 +455,11 @@ public class MainActivity extends AppCompatActivity {
             // Schedule an alarm for this prayer time
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(prayerTime.split(":")[0]));
-            calendar.set(Calendar.MINUTE, Integer.parseInt(prayerTime.split(":")[1]));
+            try {
+                calendar.set(Calendar.MINUTE, Integer.parseInt(prayerTime.split(":")[1]));
+            }catch(Exception e){
+
+            }
             calendar.set(Calendar.SECOND, 0);
 
             // Avoid scheduling for past times
@@ -462,7 +468,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             intent.putExtra("prayerName", prayerName); // Pass prayer name to BroadcastReceiver
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, i, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, i, intent, PendingIntent.FLAG_IMMUTABLE);
 
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
