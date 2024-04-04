@@ -3,9 +3,12 @@ package com.prayer.app;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,18 +43,24 @@ public class silent extends AppCompatActivity {
     ArrayList<String> prayerTimes = prayTime.getDatePrayerTimes(year, month, day, latitude, longitude, timeZone);
 
     private int startHour, startMinute, endHour, endMinute;
-    ImageView imageTurnnotificati1, imageTurnnotificati2, imageTurnnotificati3, imageTurnnotificati4, imageTurnnotificati5;
+    ImageView imageTurnnotificati1, imageTurnnotificati2, imageTurnnotificati3, imageTurnnotificati4,back , home ,  imageTurnnotificati5;
     AlarmManager alarmManager;
     PendingIntent pendingIntent1, pendingIntent2, pendingIntent3, pendingIntent4, pendingIntent5;
-    boolean fajr=true,dhuhr = true,asr=true,maghrib=true,isha=true;
+    boolean fajr,dhuhr,asr,maghrib,isha;
     public static final String PREF_SILENT = "silent";
     private static final String SILENT_MODE_ACTION = "com.example.silentmode.action";
-    PrayerTimeDatabase database;
+    SharedPreferences prefs ;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.silentpage);
 
-        PrayerTimeDatabase database = new PrayerTimeDatabase(this);
+        boolean isFajrEnabled = getNotificationState("Fajr");
+        boolean isDhuhrEnabled = getNotificationState("Dhuhr");
+        boolean isAsrEnabled = getNotificationState("Asr");
+        boolean isMaghribEnabled = getNotificationState("Maghrib");
+        boolean isIshaEnabled = getNotificationState("Isha");
+
         btnStartTime = findViewById(R.id.StarttimeB);
         tvSelectedTimes = findViewById(R.id.StarttextView);
         imageTurnnotificati1 = findViewById(R.id.imageTurnnotificati1);
@@ -59,6 +68,32 @@ public class silent extends AppCompatActivity {
         imageTurnnotificati3 = findViewById(R.id.imageTurnnotificati3);
         imageTurnnotificati4 = findViewById(R.id.imageTurnnotificati4);
         imageTurnnotificati5 = findViewById(R.id.imageTurnnotificati5);
+        back = findViewById(R.id.imageBack);
+        home = findViewById(R.id.home);
+
+        imageTurnnotificati1.setImageResource(isFajrEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
+        fajr = isFajrEnabled;
+        imageTurnnotificati2.setImageResource(isDhuhrEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
+        dhuhr = isDhuhrEnabled;
+        imageTurnnotificati3.setImageResource(isAsrEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
+        asr = isAsrEnabled;
+        imageTurnnotificati4.setImageResource(isMaghribEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
+        maghrib = isMaghribEnabled;
+        imageTurnnotificati5.setImageResource(isIshaEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
+        isha = isIshaEnabled;
+
+       back.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               goBack();
+           }
+       });
+       home.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               goHome();
+           }
+       });
         // Register BroadcastReceiver to receive custom intent
         registerReceiver(new SilentModeBroadcast(), new IntentFilter(SILENT_MODE_ACTION));
 
@@ -78,11 +113,13 @@ public class silent extends AppCompatActivity {
                 if (fajr) {
                     cancelAlarmForFajr();
                     fajr = false;
+                    imageTurnnotificati1.setImageResource(R.drawable.img_turnoffnotification);
                 } else {
                     enableFajrNotificatio();
                     fajr= true;
                     imageTurnnotificati1.setImageResource(R.drawable.img_turnnotificati);
                 }
+                saveNotificationState("Fajr", fajr);
             }
         });
         imageTurnnotificati2.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +133,8 @@ public class silent extends AppCompatActivity {
                     dhuhr= true;
                     imageTurnnotificati2.setImageResource(R.drawable.img_turnnotificati);
                 }
+                saveNotificationState("Dhuhr", dhuhr);
+
             }
         });
         imageTurnnotificati3.setOnClickListener(new View.OnClickListener() {
@@ -105,9 +144,10 @@ public class silent extends AppCompatActivity {
                     asr= false;
                 } else {
                     enableasrNotification();
-                    dhuhr= true;
+                    asr= true;
                     imageTurnnotificati3.setImageResource(R.drawable.img_turnnotificati);
                 }
+                saveNotificationState("Asr", asr);
             }
         });
         imageTurnnotificati4.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +161,7 @@ public class silent extends AppCompatActivity {
                     maghrib= true;
                     imageTurnnotificati4.setImageResource(R.drawable.img_turnnotificati);
                 }
+                saveNotificationState("Maghrib", maghrib);
             }
         });
         imageTurnnotificati5.setOnClickListener(new View.OnClickListener() {
@@ -134,167 +175,87 @@ public class silent extends AppCompatActivity {
                     isha= true;
                     imageTurnnotificati5.setImageResource(R.drawable.img_turnnotificati);
                 }
+                saveNotificationState("Isha", isha);
             }
         });
 
     }
 
+    private void goHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void goBack() {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+
     // Method to cancel the alarm for Fajr prayer time
     private void cancelAlarmForFajr() {
-        Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        if (alarmManager != null && pendingIntent != null) {
-            alarmManager.cancel(pendingIntent);
-            Toast.makeText(this, "Fajr notification disabled", Toast.LENGTH_SHORT).show();
-            imageTurnnotificati1.setImageResource(R.drawable.img_turnoffnotification);
-        }
+        saveNotificationState("Fajr", false);
+        Toast.makeText(this, "Fajr notification disabled", Toast.LENGTH_SHORT).show();
+        imageTurnnotificati1.setImageResource(R.drawable.img_turnoffnotification);
+
     }
 
     private void cancelAlarmForAsr() {
-        Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        if (alarmManager != null && pendingIntent != null) {
-            alarmManager.cancel(pendingIntent);
+             saveNotificationState("Asr", false);
             Toast.makeText(this, "Asr notification disabled", Toast.LENGTH_SHORT).show();
             imageTurnnotificati3.setImageResource(R.drawable.img_turnoffnotification);
-        }
+
     }
 
     private void cancelAlarmForDhuhr() {
-        Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        if (alarmManager != null && pendingIntent != null) {
-            alarmManager.cancel(pendingIntent);
+           saveNotificationState("Dhuhr", false);
             Toast.makeText(this, "Dhuhr notification disabled", Toast.LENGTH_SHORT).show();
             imageTurnnotificati2.setImageResource(R.drawable.img_turnoffnotification);
-        }
+
     }
 
     private void cancelAlarmForMaghrib() {
-        Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        if (alarmManager != null && pendingIntent != null) {
-            alarmManager.cancel(pendingIntent);
+           saveNotificationState("Maghrib", false);
             Toast.makeText(this, "Maghrib notification disabled", Toast.LENGTH_SHORT).show();
             imageTurnnotificati4.setImageResource(R.drawable.img_turnoffnotification);
-        }
+
     }
 
     private void cancelAlarmForIsha() {
-        Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        if (alarmManager != null && pendingIntent != null) {
-            alarmManager.cancel(pendingIntent);
+            saveNotificationState("Isha", false);
             Toast.makeText(this, "Isha notification disabled", Toast.LENGTH_SHORT).show();
             imageTurnnotificati5.setImageResource(R.drawable.img_turnoffnotification);
-        }
+
     }
 
     private void enableFajrNotificatio() {
-        String fajrTime = prayerTimes.get(0);
-        if (fajrTime != null) {
-
-            long fajrTimeMillisecond = parsePrayerTimeToMilliseconds(fajrTime);
-            Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-            intent.putExtra("prayerName", "Fajr");
-            intent.putExtra("NotificationID", 0); // Unique notification ID
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-// Get the AlarmManager service
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-// Set the alarm to trigger the intent at the Dhuhr prayer time
-            if (alarmManager != null) {
-                // Set the alarm to trigger at the Dhuhr prayer time in milliseconds
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, fajrTimeMillisecond, pendingIntent);
-            }
-            // Show a toast message or log that the Dhuhr notification is enabled
-            Toast.makeText(this, "Fajr notification enabled", Toast.LENGTH_SHORT).show();
-        } else {
-            // Handle the case where Dhuhr time couldn't be fetched
-            Toast.makeText(this, "Failed to fetch Fajr time", Toast.LENGTH_SHORT).show();
-        }
+        saveNotificationState("Fajr", true);
+        Toast.makeText(this, "Fajr notification enabled", Toast.LENGTH_SHORT).show();
+        imageTurnnotificati1.setImageResource(R.drawable.img_turnnotificati);
     }
+
 
 
     private void enableasrNotification(){
-        String asrTime = prayerTimes.get(3);
-        if (asrTime != null) {
-
-            long asrTimeMillisecond = parsePrayerTimeToMilliseconds(asrTime);
-            Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-            intent.putExtra("prayerName", "Asr");
-            intent.putExtra("NotificationID", 3); // Unique notification ID
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-// Get the AlarmManager service
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-            if (alarmManager != null) {
-
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, asrTimeMillisecond, pendingIntent);
-            }
-
-            Toast.makeText(this, "Asr notification enabled", Toast.LENGTH_SHORT).show();
-        } else {
-            // Handle the case where Dhuhr time couldn't be fetched
-            Toast.makeText(this, "Failed to fetch Asr time", Toast.LENGTH_SHORT).show();
-        }
+        saveNotificationState("Asr", true);
+        Toast.makeText(this, "Asr notification enabled", Toast.LENGTH_SHORT).show();
+        imageTurnnotificati3.setImageResource(R.drawable.img_turnnotificati);
     }
+
     private void enablemaghribNotification()
 
     {
-        String maghribTime = prayerTimes.get(4);
-        if (maghribTime != null) {
-            long maghribTimeMillisecond = parsePrayerTimeToMilliseconds(maghribTime);
-            Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-            intent.putExtra("prayerName", "Maghrib");
-            intent.putExtra("NotificationID", 4); // Unique notification ID
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        saveNotificationState("Maghrib", true);
+        Toast.makeText(this, "Maghrib notification enabled", Toast.LENGTH_SHORT).show();
+        imageTurnnotificati4.setImageResource(R.drawable.img_turnnotificati);
 
-// Get the AlarmManager service
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-            if (alarmManager != null) {
-
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, maghribTimeMillisecond, pendingIntent);
-            }
-
-            Toast.makeText(this, "Maghrib notification enabled", Toast.LENGTH_SHORT).show();
-        } else {
-            // Handle the case where Dhuhr time couldn't be fetched
-            Toast.makeText(this, "Failed to fetch Maghrib time", Toast.LENGTH_SHORT).show();
-        }
     }
     private void enableishaNotification()
     {
-        String ishaTime = prayerTimes.get(5);
-        if (ishaTime != null) {
+        saveNotificationState("Isha", true);
+        Toast.makeText(this, "Isha notification enabled", Toast.LENGTH_SHORT).show();
+        imageTurnnotificati5.setImageResource(R.drawable.img_turnnotificati);
 
-            long ishaTimeMillisecond = parsePrayerTimeToMilliseconds(ishaTime);
-            Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-            intent.putExtra("prayerName", "Isha");
-            intent.putExtra("NotificationID", 5); // Unique notification ID
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-// Get the AlarmManager service
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-            if (alarmManager != null) {
-
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, ishaTimeMillisecond, pendingIntent);
-            }
-
-            Toast.makeText(this, "Isha notification enabled", Toast.LENGTH_SHORT).show();
-        } else {
-            // Handle the case where Dhuhr time couldn't be fetched
-            Toast.makeText(this, "Failed to fetch Isha time", Toast.LENGTH_SHORT).show();
-        }
     }
     public long parsePrayerTimeToMilliseconds(String prayerTime) {
         // Assuming the time format is "HH:mm"
@@ -312,34 +273,23 @@ public class silent extends AppCompatActivity {
     }
 
     private void enableDhuhrNotification() {
-        // Fetch the Dhuhr prayer time from the database
+        saveNotificationState("Dhuhr", true);
+        Toast.makeText(this, "Dhuhr notification enabled", Toast.LENGTH_SHORT).show();
+        imageTurnnotificati2.setImageResource(R.drawable.img_turnnotificati);
 
-        String dhuhrTime = prayerTimes.get(1);
-        if (dhuhrTime != null) {
-            // Convert the fetched Dhuhr time to milliseconds
-            long dhuhrTimeMillisecond = parsePrayerTimeToMilliseconds(dhuhrTime);
-            Intent intent = new Intent(this, PrayerTimeBroadcast.class);
-            intent.putExtra("prayerName", "Dhuhr");
-            intent.putExtra("NotificationID", 1); // Unique notification ID
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-// Get the AlarmManager service
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-// Set the alarm to trigger the intent at the Dhuhr prayer time
-            if (alarmManager != null) {
-                // Set the alarm to trigger at the Dhuhr prayer time in milliseconds
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, dhuhrTimeMillisecond, pendingIntent);
-            }
-            // Show a toast message or log that the Dhuhr notification is enabled
-            Toast.makeText(this, "Dhuhr notification enabled", Toast.LENGTH_SHORT).show();
-        } else {
-            // Handle the case where Dhuhr time couldn't be fetched
-            Toast.makeText(this, "Failed to fetch Dhuhr time", Toast.LENGTH_SHORT).show();
-        }
     }
 
-
+    private void saveNotificationState(String prayerName, boolean isEnabled) {
+         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(prayerName + "_notification", isEnabled);
+        editor.apply();
+    }
+    private boolean getNotificationState(String prayerName) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        // Return the saved state; default to true if not found
+        return prefs.getBoolean(prayerName + "_notification", true);
+    }
 
 
     private void showTimePickerDialog(final boolean isUnsetSilentMode) {
@@ -393,23 +343,21 @@ public class silent extends AppCompatActivity {
         tvSelectedTimes.setText(silentTimeRange);
         // Send broadcast to set/unset silent mode
         sendBroadcast(new Intent(SILENT_MODE_ACTION)
-                    .putExtra("setSilentMode", true)
+                .putExtra("setSilentMode", true)
                 .putExtra("startHour", startHour)
                 .putExtra("startMinute", startMinute)
                 .putExtra("endHour", endHour)
                 .putExtra("endMinute", endMinute));
 
-            // Only show the toast message when setting the silent mode
-            if (startHour != -1 && endHour != -1) {
-                Toast.makeText(this, "Silent mode set for " + startHour + ":" + startMinute, Toast.LENGTH_SHORT).show();
-            }
+        // Only show the toast message when setting the silent mode
+        if (startHour != -1 && endHour != -1) {
+            Toast.makeText(this, "Silent mode set for " + startHour + ":" + startMinute, Toast.LENGTH_SHORT).show();
+        }
 
 
 
     }
 }
-
-
 
 
 

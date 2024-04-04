@@ -18,8 +18,10 @@ public class PrayerDetailActivity extends AppCompatActivity {
         Button confirmButton = findViewById(R.id.confirmButton);
         Button ignoreButton = findViewById(R.id.ignoreButton);
 
-        // Assuming you pass the prayer name as an extra in the intent
         String prayerName = getIntent().getStringExtra("prayerName");
+        if(prayerName == null) {
+            prayerName = "Prayer"; // Default name or logic to handle the null case
+        }
         prayerDetailsTextView.setText("Time for " + prayerName + ". Would you like to confirm or ignore?");
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
