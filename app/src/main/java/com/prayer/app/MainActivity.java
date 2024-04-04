@@ -453,20 +453,20 @@ public class MainActivity extends AppCompatActivity {
             /*
              * the user will get notified based on what prayer is upcoming next
              */
-           // String[] PrayerNames = {"Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"};
+
             prefs = PreferenceManager.getDefaultSharedPreferences(this);
             for (int i = 0; i < list.size() ; i++) {
-                if(i==1 || i== 5){
+                if(i==1 ){
                     continue;
                 }
                 String prayerName ="Fajr";
                 if (i==2)
-                    prayerName ="Duhr";
+                    prayerName ="Dhuhr";
                 if (i==3)
                     prayerName ="Asr";
                 if (i==4)
                     prayerName ="Maghrib";
-                if (i==6)
+                if (i==5)
                     prayerName ="Isha";
 
 
