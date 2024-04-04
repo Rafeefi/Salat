@@ -145,13 +145,13 @@ public class MainActivity extends AppCompatActivity {
         if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
             RG1 = Integer.parseInt(s1);
             RG2 = Integer.parseInt(s2);
-            //  RG3 = Integer.parseInt(s3); because we didn't implement manage location yet
+//             RG3 = Integer.parseInt(s3); //because we didn't implement manage location yet
             RG4 = Integer.parseInt(s4);
 
             prayers.setTimeFormat(RG4);//time
             prayers.setCalcMethod(RG2);
             prayers.setAsrJuristic(RG1);
-            //   prayers.setAdjustHighLats(RG3);// same problem here
+           // prayers.setAdjustHighLats(RG3);// same problem here
         } else {
             prayers.setTimeFormat(1);
             prayers.setCalcMethod(4);
@@ -174,33 +174,9 @@ public class MainActivity extends AppCompatActivity {
         PrayerTime Sunrise = new PrayerTime();
         PrayerTime Duhur = new PrayerTime();
         PrayerTime asser = new PrayerTime();
-        PrayerTime Sunset = new PrayerTime();
         PrayerTime magrib = new PrayerTime();
+        PrayerTime sunset = new PrayerTime();
         PrayerTime isha = new PrayerTime();
-
-        /*setting alarms for each notification
-        if (!prayerTimes.isEmpty()) {
-            long fajrTimeInMillis = getPrayerTimeInMillis(prayerTimes.get(0)); // Assuming 0 is the index for Fajr
-            if (fajrTimeInMillis > 0) {
-                schedulePrayerTimeNotification("Fajr", fajrTimeInMillis);
-            }
-            long dhuhrTimeInMillis = getPrayerTimeInMillis(prayerTimes.get(2)); // Dhuhr
-            if(dhuhrTimeInMillis > 0) {
-                schedulePrayerTimeNotification("Dhuhr", dhuhrTimeInMillis);
-            }
-            long AsrTimeInMillis = getPrayerTimeInMillis(prayerTimes.get(3)); // Asr
-            if(AsrTimeInMillis > 0) {
-                schedulePrayerTimeNotification("Asr", AsrTimeInMillis);
-            }
-            long MaghribTimeInMillis = getPrayerTimeInMillis(prayerTimes.get(5)); // Maghrib
-            if(MaghribTimeInMillis > 0) {
-                schedulePrayerTimeNotification("Maghrib", MaghribTimeInMillis);
-            }
-            long IshaTimeInMillis = getPrayerTimeInMillis(prayerTimes.get(6)); // Isha
-            if(IshaTimeInMillis > 0) {
-                schedulePrayerTimeNotification("Isha", IshaTimeInMillis);
-            }
-*/
 
             ArrayList<String> prayerNames = prayers.getTimeNames();
 
@@ -456,7 +432,7 @@ public class MainActivity extends AppCompatActivity {
 
             prefs = PreferenceManager.getDefaultSharedPreferences(this);
             for (int i = 0; i < list.size() ; i++) {
-                if(i==1 ){
+                if(i==1 || i==5 ){
                     continue;
                 }
                 String prayerName ="Fajr";
@@ -466,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
                     prayerName ="Asr";
                 if (i==4)
                     prayerName ="Maghrib";
-                if (i==5)
+                if (i==6)
                     prayerName ="Isha";
 
 
