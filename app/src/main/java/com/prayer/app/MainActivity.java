@@ -69,10 +69,11 @@ public class MainActivity extends AppCompatActivity {
             channel.enableVibration(true);
             channel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000}); // Example pattern
             Uri soundUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.athan);
-            AudioAttributes attributes = new AudioAttributes.Builder()
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                     .build();
-            channel.setSound(soundUri, attributes);
+             channel.setSound(soundUri, audioAttributes);
             // Register the channel with the system
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);

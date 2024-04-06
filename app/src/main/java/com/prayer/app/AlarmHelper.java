@@ -9,7 +9,7 @@ import android.os.SystemClock;
 
 public class AlarmHelper {
 
-    public static void setExact(Context context, long delayInMillis, Intent intent) {
+   public static void setExact(Context context, long delayInMillis, Intent intent) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
@@ -34,5 +34,7 @@ public class AlarmHelper {
                     SystemClock.elapsedRealtime() + delayInMillis, pendingIntent);
         }
     }
+
+
 }
 
