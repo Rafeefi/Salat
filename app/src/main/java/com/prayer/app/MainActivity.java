@@ -9,6 +9,7 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             channel.setDescription(description);
             channel.enableVibration(true);
             channel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000}); // Example pattern
-            Uri soundUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.athan);
+            Uri soundUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +"android.resource://" + getPackageName() + "/" + R.raw.athan);
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .setUsage(AudioAttributes.USAGE_NOTIFICATION)
@@ -486,6 +487,11 @@ public class MainActivity extends AppCompatActivity {
                         if (finalDate != null) {
                             long timeInMillis = finalDate.getTime(); // get time in milliseconds
                             if (alarmManager != null) {
+                                if (timeInMillis <= System.currentTimeMillis()) {
+                                    // Skip setting the alarm or add one day to 'finalDate' depending on your need
+                                     timeInMillis += 24 * 60 * 60 * 1000; // Uncomment to add a day
+                                  //  continue; // Skip setting the alarm
+                                }
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                                     if (alarmManager.canScheduleExactAlarms()) {
                                         alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
