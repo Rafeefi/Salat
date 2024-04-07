@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
@@ -20,7 +21,9 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
+
 public class PrayerTimeReminderReceiver extends BroadcastReceiver {
+
     private NotificationManagerCompat notificationManager;
 
     @SuppressLint("MissingPermission")
@@ -48,7 +51,7 @@ public class PrayerTimeReminderReceiver extends BroadcastReceiver {
             PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
             // Building the notification
-            Uri soundUri = Uri.parse("android.resource://" + context.getPackageName()+ "/" + R.raw.athan);
+           // Uri soundUri = Uri.parse("android.resource://" + context.getPackageName()+ "/" + R.raw.athan);
             Notification notification = new NotificationCompat.Builder(context, channelID)
                     .setSmallIcon(android.R.drawable.ic_lock_idle_alarm) // Replace with your app-specific icon
                     .setContentTitle("Prayer Time Reminder") // Notification title
@@ -57,12 +60,15 @@ public class PrayerTimeReminderReceiver extends BroadcastReceiver {
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setContentIntent(pendingIntent)
                     // Set the custom sound
-                    .setSound(soundUri)
                     .setAutoCancel(true)
                     .build();
 
             // No need to check for VIBRATE permission as it's not directly used here
             notificationManager.notify(notificationID, notification);
+            //starting the sound
+            Intent serviceIntent = new Intent(context, AudioPlayService.class);
+            serviceIntent.setAction(AudioPlayService.ACTION_PLAY_AUDIO);
+            ContextCompat.startForegroundService(context, serviceIntent);
         }
     }
 

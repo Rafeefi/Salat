@@ -54,10 +54,11 @@
             android:name=".CompassActivity"
             android:exported="true" />
         <activity android:name=".PrayerDetailActivity" />
-
         <receiver android:name=".PrayerTimeReminderReceiver" />
-        <receiver android:name=".PrayerTimeBroadcast" />
         <receiver android:name=".SilentModeBroadcast" />
+        <service
+            android:name=".AudioPlayService"
+            android:exported="false" />
     </application>
 
 </manifest>
