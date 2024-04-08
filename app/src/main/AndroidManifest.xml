@@ -58,7 +58,7 @@
         <receiver android:name=".SilentModeBroadcast" />
         <service
             android:name=".AudioPlayService"
-            android:exported="false" />
+            android:exported="true" />
     </application>
 
 </manifest>

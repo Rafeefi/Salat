@@ -24,50 +24,24 @@ import androidx.core.content.ContextCompat;
 
 public class PrayerTimeReminderReceiver extends BroadcastReceiver {
 
-    private NotificationManagerCompat notificationManager;
+
 
     @SuppressLint("MissingPermission")
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String prayerName = intent.getStringExtra("prayerName");
+        int NotificationID = intent.getIntExtra("NotificationID" , 0);
         boolean isEnabled = prefs.getBoolean(prayerName + "_notification", true);
 
         // Only proceed if the notification is enabled for this prayer
         if (isEnabled) {
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-
             // Define a fallback prayer name in case the intent extra is missing
             if (prayerName == null) prayerName = "Prayer";
-
-            // Channel ID must be defined in your app and created beforehand
-            String channelID = "PRAYER_REMINDER_CHANNEL";
-            int notificationID = intent.getIntExtra("NotificationID", 0); // Unique ID for each notification
-
-            // Intent that triggers when the notification is clicked
-            Intent notificationIntent = new Intent(context, PrayerDetailActivity.class);
-            notificationIntent.putExtra("prayerName", prayerName);
-            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-
-            // Building the notification
-           // Uri soundUri = Uri.parse("android.resource://" + context.getPackageName()+ "/" + R.raw.athan);
-            Notification notification = new NotificationCompat.Builder(context, channelID)
-                    .setSmallIcon(android.R.drawable.ic_lock_idle_alarm) // Replace with your app-specific icon
-                    .setContentTitle("Prayer Time Reminder") // Notification title
-                    .setContentText(prayerName + " Time Reminder") // Notification text
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                    .setContentIntent(pendingIntent)
-                    // Set the custom sound
-                    .setAutoCancel(true)
-                    .build();
-
-            // No need to check for VIBRATE permission as it's not directly used here
-            notificationManager.notify(notificationID, notification);
-            //starting the sound
             Intent serviceIntent = new Intent(context, AudioPlayService.class);
             serviceIntent.setAction(AudioPlayService.ACTION_PLAY_AUDIO);
+            serviceIntent.putExtra("prayerName", prayerName);
+            serviceIntent.putExtra("NotificationID",NotificationID);
             ContextCompat.startForegroundService(context, serviceIntent);
         }
     }
