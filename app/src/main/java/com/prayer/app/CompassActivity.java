@@ -258,8 +258,8 @@ public class CompassActivity extends AppCompatActivity {
 
             @Override
             public void onNewAzimuth(float azimuth) {
-                //   adjustGambarDial(azimuth);
-                adjustArrowQiblat(azimuth);//this works but crooked
+                   adjustGambarDial(azimuth);
+                adjustArrowQiblat(azimuth);
             }
         };
         compass.setListener(cl);

@@ -13,9 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +26,9 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CompassActivity2"
+            android:exported="false" />
+        <activity
             android:name=".Splash"
             android:exported="true">
             <intent-filter>
@@ -37,7 +39,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ManageLocation"
             android:exported="true" />
@@ -54,8 +56,10 @@
             android:name=".CompassActivity"
             android:exported="true" />
         <activity android:name=".PrayerDetailActivity" />
+
         <receiver android:name=".PrayerTimeReminderReceiver" />
         <receiver android:name=".SilentModeBroadcast" />
+
         <service
             android:name=".AudioPlayService"
             android:exported="true" />

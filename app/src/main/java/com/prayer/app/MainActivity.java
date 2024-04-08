@@ -529,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void goToCompass() {
-        Intent intent = new Intent(this,CompassActivity.class);
+        Intent intent = new Intent(this,CompassActivity2.class);
         startActivity(intent);
     }
 }
