@@ -116,9 +116,8 @@
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingBottom="@dimen/_13pxv"
                 android:singleLine="true"
-                android:text="@string/lbl_about"
                 android:textAllCaps="false"
-                tools:text="@string/getLocation" />
+                android:text="@string/getLocation" />
         </LinearLayout>
 
 

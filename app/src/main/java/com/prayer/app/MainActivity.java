@@ -130,14 +130,14 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
 
         PrayTime prayers = new PrayTime();
-        double latitude1 = 24.644659;
-        double longitude2 = 46.587570;
+        latitude = Double.parseDouble(prefs.getString("LATITUDE", "24.7248398"));
+        longitude = Double.parseDouble(prefs.getString("LONGITUDE", "46.6384049"));
         double timezone = prayers.getBaseTimeZone();
 
-        String s1 = prefs.getString(getString(R.string.juristic), "");
-        String s2 = prefs.getString(getString(R.string.calculation), "");
-        String s3 = prefs.getString(getString(R.string.latitude), "");
-        String s4 = prefs.getString(getString(R.string.time), "");
+        String s1 = prefs.getString(getString(R.string.juristic), "0");
+        String s2 = prefs.getString(getString(R.string.calculation), "4");
+        String s3 = prefs.getString(getString(R.string.latitude), "0");
+        String s4 = prefs.getString(getString(R.string.time), "1");
 
 
         int RG1;
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         int[] offsets = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
         prayers.tune(offsets);
 
-        ArrayList<String> prayerTimes = prayers.getPrayerTimes(cal, latitude1, longitude2, timezone);
+        ArrayList<String> prayerTimes = prayers.getPrayerTimes(cal, latitude, longitude, timezone);
 
 
         PrayerTime fajer = new PrayerTime();
