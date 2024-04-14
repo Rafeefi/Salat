@@ -37,15 +37,7 @@ public class PrefManager {
     public String getCityName(){
         return sharedPreferences.getString(CITY, "");
     }
-    public int getCalculationMethod(){
-        String c =  sharedPreferences.getString("calculation_type", "4");
-        return Integer.parseInt(c);
-    }
 
-    public int getTimeZone(){
-        String c =  sharedPreferences.getString("time_zone", "3");
-        return Integer.parseInt(c);
-    }
 
     public void setLocation(double latitude, double longitude) {
         editor.putString(LATITIUDE, Double.toString( latitude));
