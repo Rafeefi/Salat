@@ -69,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
             channel.setDescription(description);
             channel.enableVibration(true);
             channel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000}); // Example pattern
-           // Uri soundUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +"android.resource://" + getPackageName() + "/" + R.raw.athan);
-          //  AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    //.setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                  //  .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                  //  .build();
-             //channel.setSound(soundUri, audioAttributes);
-            // Register the channel with the system
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -104,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     ACCESS_FINE_LOCATION
             }, 100);
         }
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
 
 
@@ -529,7 +522,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void goToCompass() {
-        Intent intent = new Intent(this,CompassActivity2.class);
+        Intent intent = new Intent(this,CompassActivity.class);
         startActivity(intent);
     }
 }

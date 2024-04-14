@@ -43,7 +43,7 @@
     <string name="lbl_25_rajab_1444">25 Rajab, 1444</string>
     <string name="lbl_quran_app">Quran App</string>
     <string name="lbl_account">Account</string>
-    <string name="msg_salahti_prayer">SALAHTI Prayer App</string>
+    <string name="msg_salahti_prayer">SALATI </string>
     <string name="msg_confirm_password">Confirm Password</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->

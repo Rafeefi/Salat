@@ -24,9 +24,10 @@
                         android:id="@+id/linearRowsettings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_40pxh"
-                        android:layout_marginEnd="@dimen/_39pxh"
+                        android:layout_marginStart="@dimen/_30pxh"
                         android:layout_marginTop="@dimen/_53pxv"
+                        android:layout_marginEnd="@dimen/_30pxh"
+                        android:layout_marginBottom="@dimen/_20pxv"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -55,8 +56,8 @@
                             android:id="@+id/home"
                             android:layout_width="@dimen/_26pxh"
                             android:layout_height="@dimen/_26pxh"
-                            android:layout_marginStart="@dimen/_35pxh"
-                            android:layout_marginTop="@dimen/_7pxv"
+                            android:layout_marginStart="@dimen/_60pxh"
+                            android:layout_marginTop="@dimen/_8pxv"
                             android:layout_marginBottom="@dimen/_2pxv"
                             android:scaleType="fitXY"
                             android:src="@drawable/homeicon"
