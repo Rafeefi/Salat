@@ -41,6 +41,8 @@ public class ManageLocation extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
     SharedPreferences prefs;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_location);
@@ -88,6 +90,7 @@ public class ManageLocation extends AppCompatActivity {
                 gotoHome();
             }
         });
+
     }
     @SuppressLint("MissingPermission")
     private void getLocation(){
@@ -107,6 +110,8 @@ public class ManageLocation extends AppCompatActivity {
                         editor.putString("LATITUDE", String.valueOf(location.getLatitude()));
                         editor.putString("LONGITUDE", String.valueOf(location.getLongitude()));
                         editor.apply();
+
+
                     }
                 }
             }

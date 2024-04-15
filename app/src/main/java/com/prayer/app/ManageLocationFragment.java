@@ -23,7 +23,7 @@ import androidx.annotation.RequiresApi;
 import com.prayer.app.R;
 
 public class ManageLocationFragment extends PreferenceFragment{
-    public static final String PREF_LATITUDE = "latitude";
+    public static final String PREF_LATITUDE = "LATITUDE";
     private static final int CALLBACK_CODE = 0;
     private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
     private int RG3 = 0;

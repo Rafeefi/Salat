@@ -113,7 +113,7 @@
         <item>3</item>
     </string-array>
     <!-- LocationPreferences -->
-    <string name="latitude">latitude</string>
+    <string name="latitude">LATITUDE</string>
     <string name="latitude_title">Latitude Adjustments</string>
     <string name="latitude_default">0</string>
     <string-array name="latitude_entries">

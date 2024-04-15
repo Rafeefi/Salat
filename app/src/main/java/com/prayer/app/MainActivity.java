@@ -49,10 +49,9 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView times;
     RecyclerView.Adapter adapter;
     LocationManager locationManager;
-    TextView date , dateHijri;
+    TextView date, dateHijri;
     double latitude;
     double longitude;
-    private AudioManager myAudioManager;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
     View settings;
     View compass;
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_home);
         date = findViewById(R.id.txtDate);
-        dateHijri =findViewById(R.id.txtDateHijri);
+        dateHijri = findViewById(R.id.txtDateHijri);
         settings = findViewById(R.id.imageSearch);
         compass = findViewById(R.id.imageCompass);
         // For Gregorian Calendar
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     ACCESS_FINE_LOCATION
             }, 100);
         }
-         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
 
 
@@ -115,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     private void refrechTimes() {
@@ -140,13 +138,13 @@ public class MainActivity extends AppCompatActivity {
         if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
             RG1 = Integer.parseInt(s1);
             RG2 = Integer.parseInt(s2);
-//             RG3 = Integer.parseInt(s3); //because we didn't implement manage location yet
+            RG3 = (int) Math.round(latitude); //because we didn't implement manage location yet
             RG4 = Integer.parseInt(s4);
 
             prayers.setTimeFormat(RG4);//time
             prayers.setCalcMethod(RG2);
             prayers.setAsrJuristic(RG1);
-           // prayers.setAdjustHighLats(RG3);// same problem here
+            prayers.setAdjustHighLats(RG3);// same problem here
         } else {
             prayers.setTimeFormat(1);
             prayers.setCalcMethod(4);
@@ -173,361 +171,361 @@ public class MainActivity extends AppCompatActivity {
         PrayerTime sunset = new PrayerTime();
         PrayerTime isha = new PrayerTime();
 
-            ArrayList<String> prayerNames = prayers.getTimeNames();
+        ArrayList<String> prayerNames = prayers.getTimeNames();
 
-            times = (RecyclerView) findViewById(R.id.recyclerHome);
-            list = new ArrayList<PrayerTime>();
-
-
-            Date nowtime = new Date();
-            SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH");
-            String time = TIME_FORMAT.format(nowtime);
-
-            int timeInt = Integer.parseInt(time);
-            int next = 0;
-            double nextFloat = 0;
-            boolean isNext = true;
+        times = (RecyclerView) findViewById(R.id.recyclerHome);
+        list = new ArrayList<PrayerTime>();
 
 
-            for (int i = 0; i < prayerTimes.size(); i++) {
-                if (i == 0) {
-                    if (RG4 == 0) {
-                        fajer.setName(prayerNames.get(i));
-                        fajer.setTime(prayerTimes.get(i));
-                        String p = prayerTimes.get(i);
-                        String nextPrayer = p.substring(0, 2);
-                        int hour = Integer.parseInt(nextPrayer);
-                        if (timeInt > hour && timeInt < 20) {
-                            fajer.setNext(false);
-                        } else if (next < hour && isNext) {
-                            fajer.setNext(true);
-                            next = hour;
-                            isNext = false;
-                        } else {
-                            fajer.setNext(false);
-                        }
-                    } else if (RG4 == 3) {
-                        fajer.setName(prayerNames.get(i));
-                        fajer.setTime(prayerTimes.get(i).substring(0, 5));
-                        String p = prayerTimes.get(i).substring(0, 5);
-                        double hour = Double.parseDouble(p);
-                        if (timeInt > hour && timeInt < 20) {
-                            fajer.setNext(false);
-                        } else if (nextFloat < hour && isNext) {
-                            fajer.setNext(true);
-                            nextFloat = hour;
-                            isNext = false;
-                        } else {
-                            fajer.setNext(false);
-                        }
+        Date nowtime = new Date();
+        SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH");
+        String time = TIME_FORMAT.format(nowtime);
+
+        int timeInt = Integer.parseInt(time);
+        int next = 0;
+        double nextFloat = 0;
+        boolean isNext = true;
+
+
+        for (int i = 0; i < prayerTimes.size(); i++) {
+            if (i == 0) {
+                if (RG4 == 0) {
+                    fajer.setName(prayerNames.get(i));
+                    fajer.setTime(prayerTimes.get(i));
+                    String p = prayerTimes.get(i);
+                    String nextPrayer = p.substring(0, 2);
+                    int hour = Integer.parseInt(nextPrayer);
+                    if (timeInt > hour && timeInt < 20) {
+                        fajer.setNext(false);
+                    } else if (next < hour && isNext) {
+                        fajer.setNext(true);
+                        next = hour;
+                        isNext = false;
                     } else {
-                        fajer.setName(prayerNames.get(i));
-                        fajer.setTime(prayerTimes.get(i));
+                        fajer.setNext(false);
                     }
-                    list.add(fajer);
-                }
-                if (i == 1) {
-                    if (RG4 == 0) {
-                        Sunrise.setName(prayerNames.get(i));
-                        Sunrise.setTime(prayerTimes.get(i));
-                        String p = prayerTimes.get(i);
-                        String nextPrayer = p.substring(0, 2);
-                        int hour = Integer.parseInt(nextPrayer);
-                        if (timeInt > hour) {
-                            Sunrise.setNext(false);
-                        } else if (next < hour && isNext) {
-                            Sunrise.setNext(true);
-                            next = hour;
-                            isNext = false;
-                        } else {
-                            Sunrise.setNext(false);
-                        }
-                    } else if (RG4 == 3) {
-                        Sunrise.setName(prayerNames.get(i));
-                        Sunrise.setTime(prayerTimes.get(i).substring(0, 5));
-                        String p = prayerTimes.get(i).substring(0, 5);
-                        double hour = Double.parseDouble(p);
-                        if (timeInt > hour) {
-                            Sunrise.setNext(false);
-                        } else if (nextFloat < hour && isNext) {
-                            Sunrise.setNext(true);
-                            nextFloat = hour;
-                            isNext = false;
-                        } else {
-                            Sunrise.setNext(false);
-                        }
+                } else if (RG4 == 3) {
+                    fajer.setName(prayerNames.get(i));
+                    fajer.setTime(prayerTimes.get(i).substring(0, 5));
+                    String p = prayerTimes.get(i).substring(0, 5);
+                    double hour = Double.parseDouble(p);
+                    if (timeInt > hour && timeInt < 20) {
+                        fajer.setNext(false);
+                    } else if (nextFloat < hour && isNext) {
+                        fajer.setNext(true);
+                        nextFloat = hour;
+                        isNext = false;
                     } else {
-                        Sunrise.setName(prayerNames.get(i));
-                        Sunrise.setTime(prayerTimes.get(i));
+                        fajer.setNext(false);
                     }
-                    list.add(Sunrise);
+                } else {
+                    fajer.setName(prayerNames.get(i));
+                    fajer.setTime(prayerTimes.get(i));
                 }
-                if (i == 2) {
-                    if (RG4 == 0) {
-                        Duhur.setName(prayerNames.get(i));
-                        Duhur.setTime(prayerTimes.get(i));
-                        String p = prayerTimes.get(i);
-                        String nextPrayer = p.substring(0, 2);
-                        int hour = Integer.parseInt(nextPrayer);
-                        if (timeInt > hour) {
-                            Duhur.setNext(false);
-                        } else if (next < hour && isNext) {
-                            Duhur.setNext(true);
-                            next = hour;
-                            isNext = false;
-                        } else {
-                            Duhur.setNext(false);
-                        }
-                    } else if (RG4 == 3) {
-                        Duhur.setName(prayerNames.get(i));
-                        Duhur.setTime(prayerTimes.get(i).substring(0, 5));
-                        String p = prayerTimes.get(i).substring(0, 5);
-                        double hour = Double.parseDouble(p);
-                        if (timeInt > hour) {
-                            Duhur.setNext(false);
-                        } else if (nextFloat < hour && isNext) {
-                            Duhur.setNext(true);
-                            nextFloat = hour;
-                            isNext = false;
-                        } else {
-                            Duhur.setNext(false);
-                        }
-                    } else {
-                        Duhur.setName(prayerNames.get(i));
-                        Duhur.setTime(prayerTimes.get(i));
-                    }
-                    list.add(Duhur);
-                }
-                if (i == 3) {
-                    if (RG4 == 0) {
-                        asser.setName(prayerNames.get(i));
-                        asser.setTime(prayerTimes.get(i));
-                        String p = prayerTimes.get(i);
-                        String nextPrayer = p.substring(0, 2);
-                        int hour = Integer.parseInt(nextPrayer);
-                        if (timeInt > hour) {
-                            asser.setNext(false);
-                        } else if (next < hour && isNext) {
-                            asser.setNext(true);
-                            next = hour;
-                            isNext = false;
-                        } else {
-                            asser.setNext(false);
-                        }
-                    } else if (RG4 == 3) {
-                        asser.setName(prayerNames.get(i));
-                        asser.setTime(prayerTimes.get(i).substring(0, 5));
-                        String p = prayerTimes.get(i).substring(0, 5);
-                        double hour = Double.parseDouble(p);
-                        if (timeInt > hour) {
-                            asser.setNext(false);
-                        } else if (nextFloat < hour && isNext) {
-                            asser.setNext(true);
-                            nextFloat = hour;
-                            isNext = false;
-                        } else {
-                            asser.setNext(false);
-                        }
-                    } else {
-                        asser.setName(prayerNames.get(i));
-                        asser.setTime(prayerTimes.get(i));
-                    }
-                    list.add(asser);
-                }
-
-                if (i == 5) {
-                    if (RG4 == 0) {
-                        magrib.setName(prayerNames.get(i));
-                        magrib.setTime(prayerTimes.get(i));
-                        String p = prayerTimes.get(i);
-                        String nextPrayer = p.substring(0, 2);
-                        int hour = Integer.parseInt(nextPrayer);
-                        if (timeInt > hour) {
-                            magrib.setNext(false);
-                        } else if (next < hour && isNext) {
-                            magrib.setNext(true);
-                            next = hour;
-                            isNext = false;
-                        } else {
-                            magrib.setNext(false);
-                        }
-                    } else if (RG4 == 3) {
-                        magrib.setName(prayerNames.get(i));
-                        magrib.setTime(prayerTimes.get(i).substring(0, 5));
-                        String p = prayerTimes.get(i).substring(0, 5);
-                        double hour = Double.parseDouble(p);
-                        if (timeInt > hour) {
-                            magrib.setNext(false);
-                        } else if (nextFloat < hour && isNext) {
-                            magrib.setNext(true);
-                            nextFloat = hour;
-                            isNext = false;
-                        } else {
-                            magrib.setNext(false);
-                        }
-                    } else {
-                        magrib.setName(prayerNames.get(i));
-                        magrib.setTime(prayerTimes.get(i));
-                    }
-                    list.add(magrib);
-                }
-                if (i == 6) {
-                    if (RG4 == 0) {
-                        isha.setName(prayerNames.get(i));
-                        isha.setTime(prayerTimes.get(i));
-                        String p = prayerTimes.get(i);
-                        String nextPrayer = p.substring(0, 2);
-                        int hour = Integer.parseInt(nextPrayer);
-                        if (timeInt > hour) {
-                            isha.setNext(false);
-                        } else if (next < hour && isNext) {
-                            isha.setNext(true);
-                            next = hour;
-                            isNext = false;
-                        } else {
-                            isha.setNext(false);
-                        }
-                    } else if (RG4 == 3) {
-                        isha.setName(prayerNames.get(i));
-                        isha.setTime(prayerTimes.get(i).substring(0, 5));
-                        String p = prayerTimes.get(i).substring(0, 5);
-                        double hour = Double.parseDouble(p);
-                        System.out.println(hour);
-                        if (timeInt > hour) {
-                            isha.setNext(false);
-                        } else if (nextFloat < hour && isNext) {
-                            isha.setNext(true);
-                            nextFloat = hour;
-                            isNext = false;
-                        } else {
-                            isha.setNext(false);
-                        }
-                    } else {
-                        isha.setName(prayerNames.get(i));
-                        isha.setTime(prayerTimes.get(i));
-                    }
-                    list.add(isha);
-                }
+                list.add(fajer);
             }
-            times.setHasFixedSize(true);
-
-            adapter = new TimeViewAdapter(MainActivity.this, list);
-
-            times.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-
-            // get the current date (today) in yyyy/MM/dd format
-            Date today = new Date();
-            SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd ");
-            String date = DATE_FORMAT.format(today);
-
-            /*
-             * the user will get notified based on what prayer is upcoming next
-             */
-
-            prefs = PreferenceManager.getDefaultSharedPreferences(this);
-            for (int i = 0; i < list.size() ; i++) {
-                if(i==1 || i==5 ){
-                    continue;
-                }
-                String prayerName ="Fajr";
-                if (i==2)
-                    prayerName ="Dhuhr";
-                if (i==3)
-                    prayerName ="Asr";
-                if (i==4)
-                    prayerName ="Maghrib";
-                if (i==6)
-                    prayerName ="Isha";
-
-
-                // Check if notifications for this prayer are enabled
-                boolean isEnabled = prefs.getBoolean(prayerName + "_notification", true); // Default is true
-                //Generate a pending intent to be used later
-                if (isEnabled) {
-                    Intent intent = new Intent(this, PrayerTimeReminderReceiver.class);
-                    intent.putExtra("NotificationID", prayerName.hashCode()); // Use hash code of prayer name as ID
-                    intent.putExtra("prayerName", prayerName); // Pass prayer name to customize notification text
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, prayerName.hashCode(), intent,  PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-                    String timeInHours = "";
-                    if (RG4 == 0) {
-                        timeInHours = list.get(i).getTime().concat(":00");
-                    } else if (RG4 == 3) {
-                        String c = list.get(i).getTime();
-                        String t = c.substring(0, c.indexOf("."));
-                        if (Integer.parseInt(t) < 10) {
-                            String time1 = "0" + t + ":" + c.substring(c.indexOf(".") + 1, c.indexOf(".") + 3) + ":00";
-                            timeInHours = time1;
-                        } else {
-                            String time1 = t + ":" + c.substring(c.indexOf(".") + 1, c.indexOf(".") + 3) + ":00";
-                            timeInHours = time1;
-                        }
+            if (i == 1) {
+                if (RG4 == 0) {
+                    Sunrise.setName(prayerNames.get(i));
+                    Sunrise.setTime(prayerTimes.get(i));
+                    String p = prayerTimes.get(i);
+                    String nextPrayer = p.substring(0, 2);
+                    int hour = Integer.parseInt(nextPrayer);
+                    if (timeInt > hour) {
+                        Sunrise.setNext(false);
+                    } else if (next < hour && isNext) {
+                        Sunrise.setNext(true);
+                        next = hour;
+                        isNext = false;
+                    } else {
+                        Sunrise.setNext(false);
                     }
-                    //set the alarm as hh:mm:ss
-                    if (list.get(i).isNext()) {
-                        Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
-                        String myDate = date.concat(timeInHours);
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                        Date finalDate = null;
-                        try {
-                            finalDate = sdf.parse(myDate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
+                } else if (RG4 == 3) {
+                    Sunrise.setName(prayerNames.get(i));
+                    Sunrise.setTime(prayerTimes.get(i).substring(0, 5));
+                    String p = prayerTimes.get(i).substring(0, 5);
+                    double hour = Double.parseDouble(p);
+                    if (timeInt > hour) {
+                        Sunrise.setNext(false);
+                    } else if (nextFloat < hour && isNext) {
+                        Sunrise.setNext(true);
+                        nextFloat = hour;
+                        isNext = false;
+                    } else {
+                        Sunrise.setNext(false);
+                    }
+                } else {
+                    Sunrise.setName(prayerNames.get(i));
+                    Sunrise.setTime(prayerTimes.get(i));
+                }
+                list.add(Sunrise);
+            }
+            if (i == 2) {
+                if (RG4 == 0) {
+                    Duhur.setName(prayerNames.get(i));
+                    Duhur.setTime(prayerTimes.get(i));
+                    String p = prayerTimes.get(i);
+                    String nextPrayer = p.substring(0, 2);
+                    int hour = Integer.parseInt(nextPrayer);
+                    if (timeInt > hour) {
+                        Duhur.setNext(false);
+                    } else if (next < hour && isNext) {
+                        Duhur.setNext(true);
+                        next = hour;
+                        isNext = false;
+                    } else {
+                        Duhur.setNext(false);
+                    }
+                } else if (RG4 == 3) {
+                    Duhur.setName(prayerNames.get(i));
+                    Duhur.setTime(prayerTimes.get(i).substring(0, 5));
+                    String p = prayerTimes.get(i).substring(0, 5);
+                    double hour = Double.parseDouble(p);
+                    if (timeInt > hour) {
+                        Duhur.setNext(false);
+                    } else if (nextFloat < hour && isNext) {
+                        Duhur.setNext(true);
+                        nextFloat = hour;
+                        isNext = false;
+                    } else {
+                        Duhur.setNext(false);
+                    }
+                } else {
+                    Duhur.setName(prayerNames.get(i));
+                    Duhur.setTime(prayerTimes.get(i));
+                }
+                list.add(Duhur);
+            }
+            if (i == 3) {
+                if (RG4 == 0) {
+                    asser.setName(prayerNames.get(i));
+                    asser.setTime(prayerTimes.get(i));
+                    String p = prayerTimes.get(i);
+                    String nextPrayer = p.substring(0, 2);
+                    int hour = Integer.parseInt(nextPrayer);
+                    if (timeInt > hour) {
+                        asser.setNext(false);
+                    } else if (next < hour && isNext) {
+                        asser.setNext(true);
+                        next = hour;
+                        isNext = false;
+                    } else {
+                        asser.setNext(false);
+                    }
+                } else if (RG4 == 3) {
+                    asser.setName(prayerNames.get(i));
+                    asser.setTime(prayerTimes.get(i).substring(0, 5));
+                    String p = prayerTimes.get(i).substring(0, 5);
+                    double hour = Double.parseDouble(p);
+                    if (timeInt > hour) {
+                        asser.setNext(false);
+                    } else if (nextFloat < hour && isNext) {
+                        asser.setNext(true);
+                        nextFloat = hour;
+                        isNext = false;
+                    } else {
+                        asser.setNext(false);
+                    }
+                } else {
+                    asser.setName(prayerNames.get(i));
+                    asser.setTime(prayerTimes.get(i));
+                }
+                list.add(asser);
+            }
 
-                        if (finalDate != null) {
-                            long timeInMillis = finalDate.getTime(); // get time in milliseconds
-                            if (alarmManager != null) {
-                                if (timeInMillis <= System.currentTimeMillis()) {
-                                    // Skip setting the alarm or add one day to 'finalDate' depending on your need
-                                     timeInMillis += 24 * 60 * 60 * 1000; // Uncomment to add a day
-                                  //  continue; // Skip setting the alarm
-                                }
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                                    if (alarmManager.canScheduleExactAlarms()) {
-                                        alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
-                                    } else {
-                                        // Request permission from the user
-                                        intent = new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
-                                        startActivity(intent);
-                                    }
-                                } else {
-                                    // For older versions, just set the alarm as you normally would
+            if (i == 5) {
+                if (RG4 == 0) {
+                    magrib.setName(prayerNames.get(i));
+                    magrib.setTime(prayerTimes.get(i));
+                    String p = prayerTimes.get(i);
+                    String nextPrayer = p.substring(0, 2);
+                    int hour = Integer.parseInt(nextPrayer);
+                    if (timeInt > hour) {
+                        magrib.setNext(false);
+                    } else if (next < hour && isNext) {
+                        magrib.setNext(true);
+                        next = hour;
+                        isNext = false;
+                    } else {
+                        magrib.setNext(false);
+                    }
+                } else if (RG4 == 3) {
+                    magrib.setName(prayerNames.get(i));
+                    magrib.setTime(prayerTimes.get(i).substring(0, 5));
+                    String p = prayerTimes.get(i).substring(0, 5);
+                    double hour = Double.parseDouble(p);
+                    if (timeInt > hour) {
+                        magrib.setNext(false);
+                    } else if (nextFloat < hour && isNext) {
+                        magrib.setNext(true);
+                        nextFloat = hour;
+                        isNext = false;
+                    } else {
+                        magrib.setNext(false);
+                    }
+                } else {
+                    magrib.setName(prayerNames.get(i));
+                    magrib.setTime(prayerTimes.get(i));
+                }
+                list.add(magrib);
+            }
+            if (i == 6) {
+                if (RG4 == 0) {
+                    isha.setName(prayerNames.get(i));
+                    isha.setTime(prayerTimes.get(i));
+                    String p = prayerTimes.get(i);
+                    String nextPrayer = p.substring(0, 2);
+                    int hour = Integer.parseInt(nextPrayer);
+                    if (timeInt > hour) {
+                        isha.setNext(false);
+                    } else if (next < hour && isNext) {
+                        isha.setNext(true);
+                        next = hour;
+                        isNext = false;
+                    } else {
+                        isha.setNext(false);
+                    }
+                } else if (RG4 == 3) {
+                    isha.setName(prayerNames.get(i));
+                    isha.setTime(prayerTimes.get(i).substring(0, 5));
+                    String p = prayerTimes.get(i).substring(0, 5);
+                    double hour = Double.parseDouble(p);
+                    System.out.println(hour);
+                    if (timeInt > hour) {
+                        isha.setNext(false);
+                    } else if (nextFloat < hour && isNext) {
+                        isha.setNext(true);
+                        nextFloat = hour;
+                        isNext = false;
+                    } else {
+                        isha.setNext(false);
+                    }
+                } else {
+                    isha.setName(prayerNames.get(i));
+                    isha.setTime(prayerTimes.get(i));
+                }
+                list.add(isha);
+            }
+        }
+        times.setHasFixedSize(true);
+
+        adapter = new TimeViewAdapter(MainActivity.this, list);
+
+        times.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        // get the current date (today) in yyyy/MM/dd format
+        Date today = new Date();
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd ");
+        String date = DATE_FORMAT.format(today);
+
+        /*
+         * the user will get notified based on what prayer is upcoming next
+         */
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        for (int i = 0; i < list.size(); i++) {
+            if (i == 1 || i == 5) {
+                continue;
+            }
+            String prayerName = "Fajr";
+            if (i == 2)
+                prayerName = "Dhuhr";
+            if (i == 3)
+                prayerName = "Asr";
+            if (i == 4)
+                prayerName = "Maghrib";
+            if (i == 6)
+                prayerName = "Isha";
+
+
+            // Check if notifications for this prayer are enabled
+            boolean isEnabled = prefs.getBoolean(prayerName + "_notification", true); // Default is true
+            //Generate a pending intent to be used later
+            if (isEnabled) {
+                Intent intent = new Intent(this, PrayerTimeReminderReceiver.class);
+                intent.putExtra("NotificationID", prayerName.hashCode()); // Use hash code of prayer name as ID
+                intent.putExtra("prayerName", prayerName); // Pass prayer name to customize notification text
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this, prayerName.hashCode(), intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                String timeInHours = "";
+                if (RG4 == 0) {
+                    timeInHours = list.get(i).getTime().concat(":00");
+                } else if (RG4 == 3) {
+                    String c = list.get(i).getTime();
+                    String t = c.substring(0, c.indexOf("."));
+                    if (Integer.parseInt(t) < 10) {
+                        String time1 = "0" + t + ":" + c.substring(c.indexOf(".") + 1, c.indexOf(".") + 3) + ":00";
+                        timeInHours = time1;
+                    } else {
+                        String time1 = t + ":" + c.substring(c.indexOf(".") + 1, c.indexOf(".") + 3) + ":00";
+                        timeInHours = time1;
+                    }
+                }
+                //set the alarm as hh:mm:ss
+                if (list.get(i).isNext()) {
+                    Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
+                    String myDate = date.concat(timeInHours);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    Date finalDate = null;
+                    try {
+                        finalDate = sdf.parse(myDate);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (finalDate != null) {
+                        long timeInMillis = finalDate.getTime(); // get time in milliseconds
+                        if (alarmManager != null) {
+                            if (timeInMillis <= System.currentTimeMillis()) {
+                                // Skip setting the alarm or add one day to 'finalDate' depending on your need
+                                timeInMillis += 24 * 60 * 60 * 1000; // Uncomment to add a day
+                                //  continue; // Skip setting the alarm
+                            }
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                                if (alarmManager.canScheduleExactAlarms()) {
                                     alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
+                                } else {
+                                    // Request permission from the user
+                                    intent = new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                                    startActivity(intent);
                                 }
+                            } else {
+                                // For older versions, just set the alarm as you normally would
+                                alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
                             }
                         }
                     }
-                }else {
-                    // If notifications are disabled for this prayer, you might want to cancel any existing ones.
-                    Intent intent = new Intent(this, PrayerTimeReminderReceiver.class);
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, prayerName.hashCode(), intent, PendingIntent.FLAG_NO_CREATE | FLAG_IMMUTABLE);
-                    if (pendingIntent != null) {
-                        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                        if (alarmManager != null) {
-                            alarmManager.cancel(pendingIntent);
-                            pendingIntent.cancel(); // Cancel the PendingIntent after canceling the alarm
-                        }
+                }
+            } else {
+                // If notifications are disabled for this prayer, you might want to cancel any existing ones.
+                Intent intent = new Intent(this, PrayerTimeReminderReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this, prayerName.hashCode(), intent, PendingIntent.FLAG_NO_CREATE | FLAG_IMMUTABLE);
+                if (pendingIntent != null) {
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                    if (alarmManager != null) {
+                        alarmManager.cancel(pendingIntent);
+                        pendingIntent.cancel(); // Cancel the PendingIntent after canceling the alarm
                     }
                 }
             }
-
         }
+
+    }
 
 
     private void goToSettings() {
-        Intent intent=new Intent(this, Settings.class);
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
+
     private void goToCompass() {
-        Intent intent = new Intent(this,CompassActivity.class);
+        Intent intent = new Intent(this, CompassActivity.class);
         startActivity(intent);
     }
 }
-
-class PrayTime {
+    class PrayTime {
 
     // ---------------------- Global Variables --------------------
     private int calcMethod; // caculation method
