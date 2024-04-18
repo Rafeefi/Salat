@@ -3,21 +3,15 @@ package com.prayer.app;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
-import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
-import android.media.AudioAttributes;
-import android.media.AudioManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -138,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
             RG1 = Integer.parseInt(s1);
             RG2 = Integer.parseInt(s2);
-            RG3 = (int) Math.round(latitude); //because we didn't implement manage location yet
+            RG3 = Integer.parseInt(s3); //because we didn't implement manage location yet
             RG4 = Integer.parseInt(s4);
 
             prayers.setTimeFormat(RG4);//time
@@ -1059,6 +1053,7 @@ class PrayTime {
                 methodParams.get(this.getCalcMethod())[2], t[5]);
         double Isha = this.computeTime(
                 methodParams.get(this.getCalcMethod())[4], t[6]);
+
 
         double[] CTimes = {Fajr, Sunrise, Dhuhr, Asr, Sunset, Maghrib, Isha};
 
