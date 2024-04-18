@@ -525,7 +525,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-    class PrayTime {
+class PrayTime {
 
     // ---------------------- Global Variables --------------------
     private int calcMethod; // caculation method
@@ -580,7 +580,6 @@ public class MainActivity extends AppCompatActivity {
     private int[] offsets;
 
     public PrayTime() {
-        // try this when wanting to fix time calculations --Leen
         // Initialize vars
         //   settings_Activity s =new settings_Activity();
 
@@ -1427,6 +1426,3 @@ public class MainActivity extends AppCompatActivity {
         return timeNames;
     }
 }
-
-
-
