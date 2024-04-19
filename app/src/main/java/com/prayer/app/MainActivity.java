@@ -132,13 +132,13 @@ public class MainActivity extends AppCompatActivity {
         if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
             RG1 = Integer.parseInt(s1);
             RG2 = Integer.parseInt(s2);
-            RG3 = Integer.parseInt(s3); //because we didn't implement manage location yet
+            RG3 = (int) Double.parseDouble(s3);
             RG4 = Integer.parseInt(s4);
 
             prayers.setTimeFormat(RG4);//time
             prayers.setCalcMethod(RG2);
             prayers.setAsrJuristic(RG1);
-            prayers.setAdjustHighLats(RG3);// same problem here
+            prayers.setAdjustHighLats(RG3);
         } else {
             prayers.setTimeFormat(1);
             prayers.setCalcMethod(4);
