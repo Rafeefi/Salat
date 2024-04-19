@@ -127,12 +127,12 @@ public class MainActivity extends AppCompatActivity {
 
         int RG1;
         int RG2;
-        int RG3;
+        Double RG3;
         int RG4 = 0; // just intilize
         if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
             RG1 = Integer.parseInt(s1);
             RG2 = Integer.parseInt(s2);
-            RG3 = (int) Double.parseDouble(s3);
+            RG3 = Double.parseDouble(s3);
             RG4 = Integer.parseInt(s4);
 
             prayers.setTimeFormat(RG4);//time
@@ -525,7 +525,7 @@ class PrayTime {
     private int calcMethod; // caculation method
     private int asrJuristic; // Juristic method for Asr
     private int dhuhrMinutes; // minutes after mid-day for Dhuhr
-    private int adjustHighLats; // adjusting method for higher latitudes
+    private double adjustHighLats; // adjusting method for higher latitudes
     private int timeFormat; // time format
     private double lat; // latitude
     private double lng; // longitude
@@ -1072,6 +1072,9 @@ class PrayTime {
         times = adjustTimes(times);
         times = tuneTimes(times);
 
+        times[0] -= 1.366;  // Adjust Fajr time backwards by the typical difference
+        times[6] += 1.5;  // Adjust Isha time forwards by the typical difference
+
         return adjustTimesFormat(times);
     }
 
@@ -1217,11 +1220,11 @@ class PrayTime {
         this.dhuhrMinutes = dhuhrMinutes;
     }
 
-    public int getAdjustHighLats() {
+    public double getAdjustHighLats() {
         return adjustHighLats;
     }
 
-    public void setAdjustHighLats(int adjustHighLats) {
+    public void setAdjustHighLats(double adjustHighLats) {
         this.adjustHighLats = adjustHighLats;
     }
 
