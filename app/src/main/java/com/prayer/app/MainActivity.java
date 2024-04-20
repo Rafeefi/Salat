@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
         String s1 = prefs.getString(getString(R.string.juristic), "0");
         String s2 = prefs.getString(getString(R.string.calculation), "4");
-        String s3 = prefs.getString(getString(R.string.latitude), "0");
+        String s3 = prefs.getString(getString(R.string.latitude), "24.7248398");
         String s4 = prefs.getString(getString(R.string.time), "1");
 
 
@@ -132,10 +132,10 @@ public class MainActivity extends AppCompatActivity {
         if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
             RG1 = Integer.parseInt(s1);
             RG2 = Integer.parseInt(s2);
-            RG3 = (int) Double.parseDouble(s3);
+            RG3 = (int)Double.parseDouble(s3);
             RG4 = Integer.parseInt(s4);
 
-            prayers.setTimeFormat(RG4);//time
+            prayers.setTimeFormat(RG4);
             prayers.setCalcMethod(RG2);
             prayers.setAsrJuristic(RG1);
             prayers.setAdjustHighLats(RG3);
@@ -1053,7 +1053,6 @@ class PrayTime {
                 methodParams.get(this.getCalcMethod())[2], t[5]);
         double Isha = this.computeTime(
                 methodParams.get(this.getCalcMethod())[4], t[6]);
-
 
         double[] CTimes = {Fajr, Sunrise, Dhuhr, Asr, Sunset, Maghrib, Isha};
 
