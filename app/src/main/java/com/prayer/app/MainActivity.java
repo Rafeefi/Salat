@@ -772,9 +772,9 @@ class PrayTime {
 
     // compute base time-zone of the system
     public double getBaseTimeZone() {
-        TimeZone timez = TimeZone.getDefault();
-        double hoursDiff = (timez.getRawOffset() / 1000.0) / 3600;
-        return hoursDiff;
+        TimeZone tz = TimeZone.getDefault();
+        return (tz.getRawOffset() + (tz.inDaylightTime(new Date()) ? tz.getDSTSavings() : 0)) / 3600000.0;
+
     }
 
     // detect daylight saving in a given date
