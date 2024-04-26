@@ -10,6 +10,7 @@
 
     <TextView
         android:id="@+id/prayerDetails"
+        style="@style/txtPoppinsbold24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prayer Details"
@@ -18,12 +19,14 @@
 
     <Button
         android:id="@+id/confirmButton"
+        style="@style/btnSolidRounded_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Confirm"/>
 
     <Button
         android:id="@+id/ignoreButton"
+        style="@style/btnSolidRounded_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ignore"
