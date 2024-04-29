@@ -94,7 +94,7 @@ public class ManageLocation extends AppCompatActivity {
     }
     @SuppressLint("MissingPermission")
     private void getLocation(){
-        Toast.makeText(this, "second", Toast.LENGTH_SHORT).show();
+
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
