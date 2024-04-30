@@ -26,10 +26,6 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".CompassActivity2"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".Splash"
             android:exported="true">
             <intent-filter>

@@ -36,11 +36,7 @@ public class silent extends AppCompatActivity {
     int month = calendar.get(Calendar.MONTH) + 1; // Months are 0-indexed, so we add 1
     int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-    // Example latitude, longitude, and time zone (adjust as needed)
-    double latitude = 40.7128;   // Example latitude (e.g., latitude of New York City)
-    double longitude = -74.0060; // Example longitude (e.g., longitude of New York City)
-    double timeZone = -5;
-    ArrayList<String> prayerTimes = prayTime.getDatePrayerTimes(year, month, day, latitude, longitude, timeZone);
+
 
     private int startHour, startMinute, endHour, endMinute;
     ImageView imageTurnnotificati1, imageTurnnotificati2, imageTurnnotificati3, imageTurnnotificati4,back , home ,  imageTurnnotificati5;
