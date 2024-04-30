@@ -22,7 +22,6 @@ PLEASE DO NOT REMOVE THIS COPYRIGHT BLOCK.
 
 */
 package com.prayer.app;
-
 public class PrayerTime {
     String name;
     String time;
