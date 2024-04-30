@@ -146,34 +146,7 @@ public class Compass implements SensorEventListener {
                 }
             }
 
-            /*if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                System.arraycopy(event.values, 0, aData, 0, 3);
-                hasAS = true;
-            }
-            if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-                System.arraycopy(event.values, 0, mData, 0, 3);
-                hasMS = true;
-            }
 
-            if (hasAS && hasMS) {
-                float[] I = new float[9];
-                float[] R = new float[9];
-                boolean success = SensorManager.getRotationMatrix(R, I, aData, mData);
-
-                if (success) {
-                    float[] O = new float[3];
-                    SensorManager.getOrientation(R, O);
-                    float rotationInRadians = O[0];
-                    float rotationInDegrees = (float) Math.toDegrees(rotationInRadians);
-                    rotationInDegrees = (rotationInDegrees + 0 + 360) % 360;
-
-                    if (listener != null) {
-                        listener.onNewAzimuth(rotationInDegrees);
-                        //Log.d(TAG, "azimuth (deg): " + azimuth);
-                    }
-                    // do something with the rotation in degrees
-                }
-            }*/
         }
     }
 
@@ -182,7 +155,7 @@ public class Compass implements SensorEventListener {
     }
 
     public void adjustGambarDial(ImageView imageDial, float azimuth) {
-        // Log.d(TAG, "will set rotation from " + currentAzimuth + " to "                + azimuth);
+
 
         Animation an = new RotateAnimation(-currentAzimuth, -azimuth,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
@@ -195,7 +168,7 @@ public class Compass implements SensorEventListener {
     }
 
     public void adjustArrowQiblat(ImageView qiblatIndicator, float azimuth) {
-        //Log.d(TAG, "will set rotation from " + currentAzimuth + " to "                + azimuth);
+
 
         float kiblat_derajat = GetFloat("kiblat_derajat");
         Animation an = new RotateAnimation(-(currentAzimuth) + kiblat_derajat, -azimuth,

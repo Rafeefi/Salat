@@ -15,6 +15,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -417,9 +418,10 @@ public class MainActivity extends AppCompatActivity {
          * the user will get notified based on what prayer is upcoming next
          */
 
+
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         for (int i = 0; i < list.size(); i++) {
-            if (i == 1 || i == 5) {
+            if (i == 1) {
                 continue;
             }
             String prayerName = "Fajr";
@@ -429,7 +431,7 @@ public class MainActivity extends AppCompatActivity {
                 prayerName = "Asr";
             if (i == 4)
                 prayerName = "Maghrib";
-            if (i == 6)
+            if (i == 5)
                 prayerName = "Isha";
 
 
@@ -474,7 +476,7 @@ public class MainActivity extends AppCompatActivity {
                         if (alarmManager != null) {
                             if (timeInMillis <= System.currentTimeMillis()) {
                                 // Skip setting the alarm or add one day to 'finalDate' depending on your need
-                                timeInMillis += 24 * 60 * 60 * 1000; // Uncomment to add a day
+                                timeInMillis += 24 * 60 * 60 * 1000;
                                 //  continue; // Skip setting the alarm
                             }
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -562,26 +564,12 @@ class PrayTime {
     // ------------------- Calc Method Parameters --------------------
     private HashMap<Integer, double[]> methodParams;
 
-    /*
-     * this.methodParams[methodNum] = new Array(fa, ms, mv, is, iv);
-     *
-     * fa : fajr angle ms : maghrib selector (0 = angle; 1 = minutes after
-     * sunset) mv : maghrib parameter value (in angle or minutes) is : isha
-     * selector (0 = angle; 1 = minutes after maghrib) iv : isha parameter value
-     * (in angle or minutes)
-     */
+
     private double[] prayerTimesCurrent;
     private int[] offsets;
 
     public PrayTime() {
-        // Initialize vars
-        //   settings_Activity s =new settings_Activity();
 
-       /* this.setAsrJuristic(0);
-        this.setCalcMethod(4);
-        this.setAdjustHighLats(0);
-        this.setTimeFormat(1);
-   */
         this.setAsrJuristic(1);
         this.setCalcMethod(4);
         this.setAdjustHighLats(0);
@@ -1072,7 +1060,7 @@ class PrayTime {
         times = adjustTimes(times);
         times = tuneTimes(times);
 
-        times[0] -= 1.366;  // Adjust Fajr time backwards by the typical difference
+        times[0] -= 1.4;  // Adjust Fajr time backwards by the typical difference
         times[6] += 1.5;  // Adjust Isha time forwards by the typical difference
 
         return adjustTimesFormat(times);

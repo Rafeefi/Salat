@@ -142,61 +142,6 @@ public class CompassActivity extends AppCompatActivity {
 
     private void setUserChanges(Intent intent) {
         try {
-            // Toolbar Title
-            /*((Toolbar) findViewById(R.id.toolbar)).setTitle(
-                    (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.TOOLBAR_TITLE)) ?
-                            intent.getExtras().getString(Constants.TOOLBAR_TITLE) : getString(R.string.app_name));*/
-
-            // Toolbar Title Color
-            /*((Toolbar) findViewById(R.id.toolbar)).setTitleTextColor(
-                    (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.TOOLBAR_TITLE_COLOR)) ?
-                            Color.parseColor(intent.getExtras().getString(Constants.TOOLBAR_TITLE_COLOR)) :
-                            Color.parseColor("#" + Integer.toHexString(
-                                    ContextCompat.getColor(this, android.R.color.white))));*/
-
-            // Toolbar Background Color
-            /*findViewById(R.id.toolbar).setBackgroundColor(
-                    (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.TOOLBAR_BG_COLOR)) ?
-                            Color.parseColor(intent.getExtras().getString(Constants.TOOLBAR_BG_COLOR)) :
-                            Color.parseColor("#" + Integer.toHexString(
-                                    ContextCompat.getColor(this, R.color.app_red))));*/
-
-            // Toolbar Back Arrow Icon
-            /*Drawable drawable2 = getDrawable(getApplicationContext(),
-                    intent.getExtras().getString(Constants.TOOLBAR_NAV_ICON));
-            Drawable drawable1 = ContextCompat
-                    .getDrawable(getApplicationContext(), intent.getExtras().getInt(Constants.TOOLBAR_NAV_ICON));
-            Drawable drawable = ContextCompat
-                    .getDrawable(getApplicationContext(), (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.TOOLBAR_NAV_ICON)) ?
-                            intent.getExtras().getInt(Constants.TOOLBAR_NAV_ICON) :
-                            R.drawable.ic_arrow_back);
-            ((Toolbar) findViewById(R.id.toolbar)).setNavigationIcon(drawable2);*/
-
-            // Root Background Color
-            /*findViewById(R.id.root).setBackgroundColor(
-                    (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.COMPASS_BG_COLOR)) ?
-                            Color.parseColor(intent.getExtras().getString(Constants.COMPASS_BG_COLOR)) :
-                            Color.parseColor("#" + Integer.toHexString(
-                                    ContextCompat.getColor(this, R.color.app_red))));*/
-
-            //Qibla Degrees Text Color
-           /* ((TextView) findViewById(R.id.angle)).setTextColor(
-                    (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.ANGLE_TEXT_COLOR)) ?
-                            Color.parseColor(intent.getExtras().getString(Constants.ANGLE_TEXT_COLOR)) :
-                            Color.parseColor("#" + Integer.toHexString(
-                                    ContextCompat.getColor(this, android.R.color.white))));
-
-            / Dial
-            ((ImageView) findViewById(R.id.dial)).setImageResource(
-                    (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.DRAWABLE_DIAL)) ?
-                            intent.getExtras().getInt(Constants.DRAWABLE_DIAL) : R.drawable.dial);*/
 
             // Qibla Indicator
             ((ImageView) findViewById(R.id.qibla_indicator)).setImageResource(
@@ -204,11 +149,7 @@ public class CompassActivity extends AppCompatActivity {
                             intent.getExtras().containsKey(Constants.DRAWABLE_QIBLA)) ?
                             intent.getExtras().getInt(Constants.DRAWABLE_QIBLA) : R.drawable.qibla);
 
-            // Footer Image
-            /*findViewById(R.id.footer_image).setVisibility(
-                    (intent.getExtras() != null &&
-                            intent.getExtras().containsKey(Constants.FOOTER_IMAGE_VISIBLE)) ?
-                            intent.getExtras().getInt(Constants.FOOTER_IMAGE_VISIBLE) : View.VISIBLE);*/
+
 
              //Your Location TextView
             findViewById(R.id.your_location).setVisibility(
@@ -221,19 +162,7 @@ public class CompassActivity extends AppCompatActivity {
         }
     }
 
-    /*public Drawable getDrawable(Context context, String resource_name) {
-        try {
-            int resId = context.getResources().getIdentifier(resource_name, "drawable", context.getPackageName());
-            if (resId != 0) {
-                return ContextCompat.getDrawable(context, resId);
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "getDrawable - resource_name: " + resource_name);
-            e.printStackTrace();
-        }
 
-        return null;
-    }*/
 
     private void setupCompass() {
         Boolean permission_granted = GetBoolean("permission_granted");
