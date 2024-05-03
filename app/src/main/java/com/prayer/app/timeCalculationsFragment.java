@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,32 +31,37 @@ public class timeCalculationsFragment extends PreferenceFragment {
     private int RG3 = 0;
     private int RG4 = 1;
     ImageView back ;
+    SharedPreferences prefs;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.timepreferences);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = prefs.edit();
         //Listener for all the groups
         preferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
                 if (key.equals(PREF_JURISTIC)) {
                     ListPreference juristicPref = (ListPreference) findPreference(key); //if you need the preference key similar to find by ID
                     RG1 = Integer.valueOf((juristicPref.getValue()));
+                    editor.putString(getString(R.string.juristic), String.valueOf(RG1));
                     Toast.makeText(getActivity(), "Juristic method updated", Toast.LENGTH_SHORT).show();
                 }
                 if (key.equals(PREF_CALC)) {
                     ListPreference calculatePref = (ListPreference) findPreference(key);
                     RG2 = Integer.valueOf((calculatePref.getValue()));
-
+                    editor.putString(getString(R.string.calculation), String.valueOf(RG2));
                     Toast.makeText(getActivity(),"Calculation convention updated" , Toast.LENGTH_SHORT).show();
                 }
 
                 if (key.equals(PREF_TIME)) {
                     ListPreference timePref = (ListPreference) findPreference(key);
                     RG4 = Integer.valueOf((timePref.getValue()));
-
+                    editor.putString(getString(R.string.time), String.valueOf(RG4));
                     Toast.makeText(getActivity(), "Time format updated", Toast.LENGTH_SHORT).show();
                 }
 

@@ -68,7 +68,7 @@ public class AudioPlayService extends Service {
                 .setContentText("Time for " + prayerName)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
                 .setContentIntent(pendingIntent)
                 .addAction(android.R.drawable.ic_media_pause, "Stop", pendingStopSelf) // Adding the "Stop" action button
                 .build();

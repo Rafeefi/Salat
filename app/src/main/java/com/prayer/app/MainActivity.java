@@ -520,6 +520,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CompassActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refrechTimes();
+    }
 }
 class PrayTime {
 
@@ -1023,7 +1029,7 @@ class PrayTime {
     }
 
     // ---------------------- Compute Prayer Times -----------------------
-    // compute prayer times at given julian date
+    // compute prayer times at given julian date and methodParams differs based on the calculation method
     private double[] computeTimes(double[] times) {
 
         double[] t = dayPortion(times);
