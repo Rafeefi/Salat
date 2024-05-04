@@ -63,7 +63,7 @@
             android:screenOrientation="portrait"/>/>
 
         <receiver android:name=".PrayerTimeReminderReceiver" />
-        <receiver android:name=".SilentModeBroadcast" />
+
 
         <service
             android:name=".AudioPlayService"

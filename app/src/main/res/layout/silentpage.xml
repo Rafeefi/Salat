@@ -317,12 +317,23 @@
                             style="@style/btnSolidRounded_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center|clip_vertical|fill_vertical"
-                            android:layout_marginLeft="@dimen/_60pxh"
-                            android:layout_marginTop="@dimen/_25pxh"
+
+                            android:layout_marginLeft="@dimen/_40pxh"
+                            android:layout_marginTop="@dimen/_60pxh"
                             android:layout_marginBottom="@dimen/_100pxv"
                             android:gravity="center"
                             android:text="Silent time" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/CancelTimer"
+                            style="@style/btnSolidRounded_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_250pxh"
+                            android:layout_marginTop="@dimen/_60pxh"
+                            android:layout_marginBottom="@dimen/_100pxv"
+                            android:gravity="center"
+                            android:text="Cancel" />
 
 
                     </FrameLayout>
