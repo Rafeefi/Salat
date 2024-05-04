@@ -424,7 +424,7 @@ public class silent extends AppCompatActivity {
             }
         }
     }
-
+//Ckecking if merged correctly
     // Calculate duration in milliseconds between start time and end time
     private long calculateDurationInMillis(int startHour, int startMinute, int endHour, int endMinute) {
         Calendar startTime = Calendar.getInstance();
