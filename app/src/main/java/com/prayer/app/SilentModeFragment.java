@@ -1,11 +1,10 @@
 package com.prayer.app;
+
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,17 +12,14 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 public class SilentModeFragment  extends PreferenceFragment {
     public static final String PREF_SILENT = "silent";
-    private static final int CALLBACK_CODE = 0;
+    protected static final int CALLBACK_CODE = 0;
     private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {

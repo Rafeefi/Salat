@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -44,7 +45,7 @@ public class silent extends AppCompatActivity {
     PendingIntent pendingIntent1, pendingIntent2, pendingIntent3, pendingIntent4, pendingIntent5;
     boolean fajr,dhuhr,asr,maghrib,isha;
     public static final String PREF_SILENT = "silent";
-    private static final String SILENT_MODE_ACTION = "com.example.silentmode.action";
+    private static final String SILENT_MODE_ACTION = "com.prayer.app.silent.action";
     SharedPreferences prefs ;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -330,30 +331,76 @@ public class silent extends AppCompatActivity {
 
         timePickerDialog.show();
     }
-    private void setSilentMode(int startHour, int startMinute,int endHour, int endMinute) {
+    private Handler mHandler = new Handler();
+
+    private void setSilentMode(final int startHour, final int startMinute, final int endHour, final int endMinute) {
         String startTime = String.format(Locale.getDefault(), "%02d:%02d", startHour, startMinute);
         String endTime = String.format(Locale.getDefault(), "%02d:%02d", endHour, endMinute);
 
         // Update TextView with both start and end times
         String silentTimeRange = "Start: " + startTime + " - End: " + endTime;
         tvSelectedTimes.setText(silentTimeRange);
-        // Send broadcast to set/unset silent mode
-        sendBroadcast(new Intent(SILENT_MODE_ACTION)
-                .putExtra("setSilentMode", true)
-                .putExtra("startHour", startHour)
-                .putExtra("startMinute", startMinute)
-                .putExtra("endHour", endHour)
-                .putExtra("endMinute", endMinute));
+        // Schedule a task to check the time every minute
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                checkTime(startHour, startMinute, endHour, endMinute);
+                // Schedule the next check after one minute
+                mHandler.postDelayed(this, 60000); // 60000 milliseconds = 1 minute
+            }
+        }, 60000); // Start the first check after one minute
+    }
 
-        // Only show the toast message when setting the silent mode
-        if (startHour != -1 && endHour != -1) {
-            Toast.makeText(this, "Silent mode set for " + startHour + ":" + startMinute, Toast.LENGTH_SHORT).show();
+    private void checkTime(int startHour, int startMinute, int endHour, int endMinute) {
+        // Get the current time
+        Calendar currentTime = Calendar.getInstance();
+        int currentHour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int currentMinute = currentTime.get(Calendar.MINUTE);
+
+        // Check if current time matches the start time
+        if (currentHour == startHour && currentMinute == startMinute) {
+            // Enable silent mode
+            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            Toast.makeText(this, "Silent mode enabled", Toast.LENGTH_SHORT).show();
         }
+        // Check if current time matches the end time
+        else if (currentHour == endHour && currentMinute == endMinute) {
+            // Disable silent mode
+            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+            Toast.makeText(this, "Silent mode disabled", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 
+
+    // Calculate duration in milliseconds from start time to end time
+    private long calculateDuration(int startHour, int startMinute, int endHour, int endMinute) {
+        long startMillis = convertTimeToMillis(startHour, startMinute);
+        long endMillis = convertTimeToMillis(endHour, endMinute);
+
+        // Calculate duration
+        long duration = endMillis - startMillis;
+        if (duration < 0) {
+            // If the end time is before the start time, add 24 hours
+            duration += 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        }
+        return duration;
+    }
+
+    // Convert time to milliseconds
+    private long convertTimeToMillis(int hour, int minute) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTimeInMillis();
     }
 }
+
 
 
 
