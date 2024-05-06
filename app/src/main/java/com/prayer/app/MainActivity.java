@@ -1066,7 +1066,7 @@ class PrayTime {
         times = adjustTimes(times);
         times = tuneTimes(times);
 
-        times[0] -= 1.4;  // Adjust Fajr time backwards by the typical difference
+        times[0] -= 1.42;  // Adjust Fajr time backwards by the typical difference
         times[6] += 1.5;  // Adjust Isha time forwards by the typical difference
 
         return adjustTimesFormat(times);
