@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnsalahtiprayer"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylecyan_100">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:contentInsetStart="0dp">
+
+            <LinearLayout
+                android:id="@+id/linearRowsettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30pxh"
+                android:layout_marginTop="@dimen/_53pxv"
+                android:layout_marginEnd="@dimen/_30pxh"
+                android:layout_marginBottom="@dimen/_20pxv"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageBack"
+                    android:layout_width="@dimen/_25pxh"
+                    android:layout_height="@dimen/_25pxh"
+                    android:layout_marginTop="@dimen/_8pxv"
+                    android:layout_marginBottom="@dimen/_2pxv"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_settings"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/img_settings" />
+
+                <TextView
+                    android:id="@+id/txtSettingsOne"
+                    style="@style/txtPoppinsbold24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_120pxh"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="Map"
+                    tools:text="Map" />
+
+                <ImageView
+                    android:id="@+id/home"
+                    android:layout_width="@dimen/_26pxh"
+                    android:layout_height="@dimen/_26pxh"
+                    android:layout_marginStart="@dimen/_90pxh"
+                    android:layout_marginTop="@dimen/_8pxv"
+                    android:layout_marginBottom="@dimen/_2pxv"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/homeicon"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/homeicon" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <FrameLayout
+            android:id="@+id/linearSplash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            android:gravity="start|top"
+            >
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginBottom="200dp"/>
+
+            <Button
+                android:id="@+id/btnSaveLocation"
+                style="@style/btnSolidRounded_1"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="400dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Save Silent Zone" />
+            <Button
+                android:id="@+id/btnRemoveLocation"
+                style="@style/btnSolidRounded_1"
+                android:layout_marginTop="400dp"
+                android:layout_marginLeft="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Remove Silent Zone" />
+
+        </FrameLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

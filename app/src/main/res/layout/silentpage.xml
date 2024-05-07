@@ -334,6 +334,16 @@
                             android:layout_marginBottom="@dimen/_100pxv"
                             android:gravity="center"
                             android:text="Cancel" />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnSelectLocation"
+                            style="@style/btnSolidRounded_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_140pxh"
+                            android:layout_marginTop="@dimen/_130pxh"
+                            android:gravity="center"
+                            android:text="Select Location"/>
+
 
 
                     </FrameLayout>

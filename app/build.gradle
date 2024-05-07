@@ -61,9 +61,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.activity:activity-ktx:1.6.1"
     implementation "androidx.fragment:fragment-ktx:1.5.5"
-
     implementation 'com.google.android.material:material:1.7.0'
-
+    implementation 'org.osmdroid:osmdroid-android:6.1.10' // Check for the latest version
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-core-ext:$koin_version"
     implementation "io.insert-koin:koin-androidx-scope:$koin_version"

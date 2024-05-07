@@ -34,7 +34,7 @@ import java.util.Locale;
 
 public class silent extends AppCompatActivity {
 
-    private Button btnStartTime, btnEndTime;
+    private Button btnStartTime, btnEndTime ,btnSelectLocation;
     private TextView tvSelectedTimes;
     Calendar calendar = Calendar.getInstance();
     int year = calendar.get(Calendar.YEAR);
@@ -71,7 +71,7 @@ public class silent extends AppCompatActivity {
         back = findViewById(R.id.imageBack);
         home = findViewById(R.id.home);
         btnEndTime = ((Button) findViewById(R.id.CancelTimer));
-
+        btnSelectLocation=((Button) findViewById(R.id.btnSelectLocation));
         imageTurnnotificati1.setImageResource(isFajrEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
         fajr = isFajrEnabled;
         imageTurnnotificati2.setImageResource(isDhuhrEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
@@ -82,6 +82,12 @@ public class silent extends AppCompatActivity {
         maghrib = isMaghribEnabled;
         imageTurnnotificati5.setImageResource(isIshaEnabled ? R.drawable.img_turnnotificati : R.drawable.img_turnoffnotification);
         isha = isIshaEnabled;
+        btnSelectLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             GotoMap();
+            }
+        });
         btnEndTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,6 +201,11 @@ public class silent extends AppCompatActivity {
             tvSelectedTimes.setText(silentTimeRange);
         }
 
+    }
+
+    private void GotoMap() {
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
     }
 
     private void goHome() {
