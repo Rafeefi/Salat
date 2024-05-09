@@ -74,6 +74,8 @@ public class MapActivity extends Activity {
             }
         });
 
+
+
         btnDisableLocation = findViewById(R.id.btnRemoveLocation);
         btnDisableLocation.setOnClickListener(v -> disableGeofence());
 
