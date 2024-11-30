@@ -1,7 +1,7 @@
 
 # prayertimeapp
 
-Built with AndroidX Support
+Prayer Times and qibla compass application that is developed in Android Studio using Java and Kotlin
 
 Requires Android Studio Arctic Fox | 2020.3.1 or higher.
 
